@@ -3,7 +3,7 @@ from integrity_functions import *
 from postgres_functions import *
 from update_functions import *
 
-
+##ciao
 
 def main():
     i = int(input("Enter 1 to generate pickle files, 2 to run the integrity checks, 3 to run the update checks: \n"))
