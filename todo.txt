@@ -1,0 +1,25 @@
+1) OK Cambia case sensitive, fai rename...tutti campi in minuscolo senza virgolette 
+
+2) OK Controlla duplicati da import [rimangono i duplicati del 2022]
+
+3) Programma per controllo integrità del dato: randomicamente controlla che i dati nelle tabelle e i dati sui csv sorgente siano coerenti 
+
+	Soluzione OK, ma la selezione randomica non è veramente randomica
+	
+	Dati del 2007 e del 2010 hanno problemi --> CONTROLLA
+
+	SELECT * FROM woneli.sql_table
+	WHERE 0.01 >= CAST(CHECKSUM(NEWID()) & 0x7fffffff AS float)
+	/ CAST (0x7fffffff AS int)
+
+4) Creare tabella di logging --> tenere traccia di quando avvengono le cose (tipo a che ora è stato caricato il csv X, quanti record sono stati caricati)
+loggare tempo a cui si fa una chiamata a api, quanti dati si portano in casa
+
+5) Per 2022: controllare ogni quanto vengono aggiornati i dati per fare 6)
+
+6) Sistemare ingestion da API: manca automatizzazione 
+
+
+select * where dataroa < di last_check
+put that into a pandas.df
+check if when id, dataora are equal --> valore, stato are different
