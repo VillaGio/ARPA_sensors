@@ -38,7 +38,7 @@ def checkRecordIntegrity(sourceCsvFile, dbTable):
     for i in range(100000):
         r = randint(0,len(dbTable)-1) 
         if (sourceCsvFile["idsensore"][r] != dbTable["idsensore"][r] or 
-            (sourceCsvFile["dataora"][r] != dbTable["dataora"][r] and sourceCsvFile["dataora"][r].minute != 59) or
+            sourceCsvFile["dataora"][r] != dbTable["dataora"][r] or
             sourceCsvFile["valore"][r] != dbTable["valore"][r]):
             wrong_count += 1
             print('   CHECK FAILED at row: '+ str(r))

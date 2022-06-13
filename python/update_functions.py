@@ -26,7 +26,7 @@ def getLastCheckedTable(lastCheckedDate):
 
 
 def fromJsonFileToDf(filename):
-    with open("../dati_sensori_1968_2020/test_update/%s.json") %filename as fp:
+    with open("../dati_sensori_1968_2020/test_update/" + filename + ".json") as fp:
         record_list = json.load(fp)
     df = pd.json_normalize(record_list)
     df.rename(columns={"data":"dataora"}, inplace = True)
@@ -58,7 +58,12 @@ def getSortedJsonDf(jsonDf):
 
 def compareDfs(dbDf, apiDf):
     df_update = dbDf.copy() 
-    df_update["update"] = np.where(np.logical_and( np.logical_and(df_update['idsensore'] == apiDf["idsensore"], (df_update["dataora"] == apiDf["dataora"] ) ), np.logical_or( (df_update['valore']!= apiDf["valore"]),(df_update['stato']!= apiDf["stato"]))), True, False)
+    df_update["update"] = np.where(
+        np.logical_and((df_update['idsensore'] == apiDf["idsensore"]), 
+        (df_update["dataora"] == apiDf["dataora"]), 
+        np.logical_or((df_update['valore']!= apiDf["valore"]),
+        (df_update['stato']!= apiDf["stato"]))),
+         True, False)
     return df_update
 
 def compareDfsAllCols(dbDf, apiDf):
@@ -69,8 +74,8 @@ def compareDfsAllCols(dbDf, apiDf):
     df_update["statoAPI"] = apiDf["stato"]
 
     df_update["update"] = np.where(
-        np.logical_or(np.logical_or(df_update['idsensore'] != apiDf["idsensore"], 
-        np.logical_and(df_update["dataora"] != apiDf["dataora"], apiDf["dataora"].dt.minute != 59)),
+        np.logical_and(df_update['idsensore'] == apiDf["idsensore"], 
+        df_update["dataora"] == apiDf["dataora"],
         df_update['valore']!= apiDf["valore"]), True, False)
     
     return df_update
@@ -97,5 +102,20 @@ def updateCheck(datetime):
     countDifferences(df).to_csv("../dati_sensori_1968_2020/test_update/test_{!s}.csv".format(str(date.today())))
     print("\nResults successfully saved into test_{!s}.csv".format(str(date.today())))
 
-
+def weeklyUpdateCheck(lastWeekFile, thisWeekFile):
+    print("\nStarting update check.")
+    print("\n> Retrieving data loaded on %s..." %lastWeekFile[:-5])
+    lastWeek = fromJsonFileToDf(lastWeekFile)
+    lastWeek = getSortedJsonDf(lastWeek)
+    print("\n> Retrieving data loaded on %s..." %thisWeekFile[:-5])
+    thisWeek = fromJsonFileToDf(thisWeekFile)
+    thisWeek = getSortedJsonDf(thisWeek)
+    
+    print("> Comparision...")
+    df = pd.merge(lastWeek,thisWeek, on=['idsensore','dataora', 'valore', 'stato'], how='left', indicator='Exist')
+    df['update'] = np.where(df.Exist == 'both', False, True)
+    df = df[df["update"]==True]
+    
+    print(countDifferences(df))
+    print("\nDone.")
 
