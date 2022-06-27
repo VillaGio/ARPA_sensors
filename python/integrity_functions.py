@@ -52,7 +52,8 @@ def checkRecordIntegrity(sourceCsvFile, dbTable):
 
 def checkIntegrity(year):
     if year == 0:
-        year_list = [1995, 2000, 2004, 2007, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]
+         #year_list = [1995, 2000, 2004, 2007, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021]
+        year_list = [1995, 2000, 2004, 2007, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]
     else:
         year_list = [year]
     print("\nIntegrity check started.")

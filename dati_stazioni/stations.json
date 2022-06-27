@@ -1,0 +1,95 @@
+[
+    {
+        "idsensore": "10001",
+        "nometiposensore": "Ossidi di Azoto",
+        "unitamisura": "µg/m³",
+        "idstazione": "683",
+        "nomestazione": "Cassano d'Adda 2-v.Milano",
+        "quota": "133",
+        "provincia": "MI",
+        "comune": "Cassano d'Adda",
+        "storico": "N",
+        "datastart": "2006-02-17T00:00:00.000",
+        "utm_nord": "5041567",
+        "utm_est": "540293",
+        "lat": "45.52647254585104",
+        "lng": "9.515980483627096",
+        "location": {
+            "latitude": "45.52647254585104",
+            "longitude": "9.515980483627096",
+            "human_address": "{\"address\": \"\", \"city\": \"\", \"state\": \"\", \"zip\": \"\"}"
+        },
+        ":@computed_region_6hky_swhk": "4",
+        ":@computed_region_ttgh_9sm5": "4"
+    },
+    {
+        "idsensore": "10002",
+        "nometiposensore": "Monossido di Carbonio",
+        "unitamisura": "mg/m³",
+        "idstazione": "683",
+        "nomestazione": "Cassano d'Adda 2-v.Milano",
+        "quota": "133",
+        "provincia": "MI",
+        "comune": "Cassano d'Adda",
+        "storico": "N",
+        "datastart": "2006-04-22T00:00:00.000",
+        "utm_nord": "5041567",
+        "utm_est": "540293",
+        "lat": "45.52647254585104",
+        "lng": "9.515980483627096",
+        "location": {
+            "latitude": "45.52647254585104",
+            "longitude": "9.515980483627096",
+            "human_address": "{\"address\": \"\", \"city\": \"\", \"state\": \"\", \"zip\": \"\"}"
+        },
+        ":@computed_region_6hky_swhk": "4",
+        ":@computed_region_ttgh_9sm5": "4"
+    },
+    {
+        "idsensore": "10004",
+        "nometiposensore": "Ossidi di Azoto",
+        "unitamisura": "µg/m³",
+        "idstazione": "684",
+        "nomestazione": "Truccazzano via Fornasino",
+        "quota": "105",
+        "provincia": "MI",
+        "comune": "Truccazzano",
+        "storico": "S",
+        "datastart": "2006-02-17T00:00:00.000",
+        "datastop": "2018-01-01T00:00:00.000",
+        "utm_nord": "5036889",
+        "utm_est": "536835",
+        "lat": "45.48455813667995",
+        "lng": "9.471348388974729",
+        "location": {
+            "latitude": "45.48455813667995",
+            "longitude": "9.471348388974729",
+            "human_address": "{\"address\": \"\", \"city\": \"\", \"state\": \"\", \"zip\": \"\"}"
+        },
+        ":@computed_region_6hky_swhk": "4",
+        ":@computed_region_ttgh_9sm5": "4"
+    },
+    {
+        "idsensore": "10005",
+        "nometiposensore": "Biossido di Azoto",
+        "unitamisura": "µg/m³",
+        "idstazione": "684",
+        "nomestazione": "Truccazzano via Fornasino",
+        "quota": "105",
+        "provincia": "MI",
+        "comune": "Truccazzano",
+        "storico": "S",
+        "datastart": "2006-02-17T00:00:00.000",
+        "datastop": "2018-01-01T00:00:00.000",
+        "utm_nord": "5036889",
+        "utm_est": "536835",
+        "lat": "45.48455813667995",
+        "lng": "9.471348388974729",
+        "location": {
+            "latitude": "45.48455813667995",
+            "longitude": "9.471348388974729",
+            "human_address": "{\"address\": \"\", \"city\": \"\", \"state\": \"\", \"zip\": \"\"}"
+        },
+        ":@computed_region_6hky_swhk": "4",
+        ":@computed_region_ttgh_9sm5": "4"
+    }]
