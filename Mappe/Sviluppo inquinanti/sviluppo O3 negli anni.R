@@ -40,7 +40,7 @@ lomb_line <- fortify(lomb)
 #plot iniziale
 layer1<-c(geom_tile(data=idw.o,aes(fill=logp.pred))) #layer valori stimati per pixel
 layer2<-c(geom_path(data=lomb_line,aes(long, lat, group = group),colour = "grey20", size=1)) # layer con confini comune
-title<-ggtitle("Mappa della concentrazione O3 in Lombardia nel 2021")
+title<-ggtitle("Concentration map of O3 in Lombardy in 2021")
 plot+layer1+layer2+scale_fill_gradient(low="#FEEBE2", high="#03730f", limits=c(3.5, 4.5), breaks=seq(3.5,4.5,by=0.2))+coord_equal() + title + labs(fill = "Logaritmo della concentrazione di O3") 
 
 ## 2019
@@ -72,7 +72,7 @@ lomb_line <- fortify(lomb)
 #plot iniziale
 layer1<-c(geom_tile(data=idw.o,aes(fill=logp.pred))) #layer valori stimati per pixel
 layer2<-c(geom_path(data=lomb_line,aes(long, lat, group = group),colour = "grey20", size=1)) # layer con confini comune
-title<-ggtitle("Mappa della concentrazione O3 in Lombardia nel 2019")
+title<-ggtitle("Concentration map of O3 in Lombardy in 2019")
 plot+layer1+layer2+scale_fill_gradient(low="#FEEBE2", high="#03730f", limits=c(3.5, 4.5), breaks=seq(3.5,4.5,by=0.2))+coord_equal() + title + labs(fill = "Logaritmo della concentrazione di O3") 
 
 ## 2017
@@ -103,7 +103,7 @@ lomb_line <- fortify(lomb)
 #plot iniziale
 layer1<-c(geom_tile(data=idw.o,aes(fill=logp.pred))) #layer valori stimati per pixel
 layer2<-c(geom_path(data=lomb_line,aes(long, lat, group = group),colour = "grey20", size=1)) # layer con confini comune
-title<-ggtitle("Mappa della concentrazione O3 in Lombardia nel 2017")
+title<-ggtitle("Concentration map of O3 in Lombardy in 2017")
 plot+layer1+layer2+scale_fill_gradient(low="#FEEBE2", high="#03730f", limits=c(3.5, 4.5), breaks=seq(3.5,4.5,by=0.2))+coord_equal() + title + labs(fill = "Logaritmo della concentrazione di O3") 
 
 ## 2015
@@ -134,7 +134,7 @@ lomb_line <- fortify(lomb)
 #plot iniziale
 layer1<-c(geom_tile(data=idw.o,aes(fill=logp.pred))) #layer valori stimati per pixel
 layer2<-c(geom_path(data=lomb_line,aes(long, lat, group = group),colour = "grey20", size=1)) # layer con confini comune
-title<-ggtitle("Mappa della concentrazione O3 in Lombardia nel 2015")
+title<-ggtitle("Concentration map of O3 in Lombardy in 2015")
 plot+layer1+layer2+scale_fill_gradient(low="#FEEBE2", high="#03730f", limits=c(3.5, 4.5), breaks=seq(3.5,4.5,by=0.2))+coord_equal() + title + labs(fill = "Logaritmo della concentrazione di O3") 
 
 ## 2013
@@ -165,7 +165,7 @@ lomb_line <- fortify(lomb)
 #plot iniziale
 layer1<-c(geom_tile(data=idw.o,aes(fill=logp.pred))) #layer valori stimati per pixel
 layer2<-c(geom_path(data=lomb_line,aes(long, lat, group = group),colour = "grey20", size=1)) # layer con confini comune
-title<-ggtitle("Mappa della concentrazione O3 in Lombardia nel 2013")
+title<-ggtitle("Concentration map of O3 in Lombardy in 2013")
 plot+layer1+layer2+scale_fill_gradient(low="#FEEBE2", high="#03730f", limits=c(3.5, 4.5), breaks=seq(3.5,4.5,by=0.2))+coord_equal() + title + labs(fill = "Logaritmo della concentrazione di O3") 
 
 ## 2011
@@ -196,6 +196,6 @@ lomb_line <- fortify(lomb)
 #plot iniziale
 layer1<-c(geom_tile(data=idw.o,aes(fill=logp.pred))) #layer valori stimati per pixel
 layer2<-c(geom_path(data=lomb_line,aes(long, lat, group = group),colour = "grey20", size=1)) # layer con confini comune
-title<-ggtitle("Mappa della concentrazione O3 in Lombardia nel 2011")
+title<-ggtitle("Concentration map of O3 in Lombardy in 2011")
 plot+layer1+layer2+scale_fill_gradient(low="#FEEBE2", high="#03730f", limits=c(3.5, 4.5), breaks=seq(3.5,4.5,by=0.2))+coord_equal() + title + labs(fill = "Logaritmo della concentrazione di O3") 
 
