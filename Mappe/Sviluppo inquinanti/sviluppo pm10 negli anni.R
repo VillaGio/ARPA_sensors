@@ -62,7 +62,7 @@ lomb_line <- fortify(lomb)
 #plot iniziale
 layer1<-c(geom_tile(data=idw.o,aes(fill=logp.pred))) #layer valori stimati per pixel
 layer2<-c(geom_path(data=lomb_line,aes(long, lat, group = group),colour = "grey20", size=1)) # layer con confini comune
-title<-ggtitle("Mappa della concentrazione PM10 in Lombardia nel 2021")
+title<-ggtitle("Concentration map of PM10 in Lombardy in 2021")
 plot+layer1+layer2+scale_fill_gradient(low="#FEEBE2", high="#03730f",limits=c(2.25, 4.25), breaks=seq(2.75,4.25,by=0.5))+coord_equal() + title + labs(fill = "Logaritmo della concentrazione di PM10") 
 
 ## 10 e 2 ci piacciono come valori di vicinato ed esponente
@@ -96,7 +96,7 @@ plot<-ggplot(data=idw.o,aes(x=long,y=lat))
 #plot iniziale
 layer1<-c(geom_tile(data=idw.o,aes(fill=logp.pred))) #layer valori stimati per pixel
 layer2<-c(geom_path(data=lomb_line,aes(long, lat, group = group),colour = "grey20", size=1)) # layer con confini comune
-title<-ggtitle("Mappa della concentrazione PM10 in Lombardia nel 2019")
+title<-ggtitle("Concentration map of PM10 in Lombardy in 2019")
 plot+layer1+layer2+scale_fill_gradient(low="#FEEBE2", high="#03730f",limits=c(2.25, 4.25), breaks=seq(2.75,4.25,by=0.5))+coord_equal() + title + labs(fill = "Logaritmo della concentrazione di PM10") 
 
 
@@ -129,7 +129,7 @@ plot<-ggplot(data=idw.o,aes(x=long,y=lat))
 #plot iniziale
 layer1<-c(geom_tile(data=idw.o,aes(fill=logp.pred))) #layer valori stimati per pixel
 layer2<-c(geom_path(data=lomb_line,aes(long, lat, group = group),colour = "grey20", size=1)) # layer con confini comune
-title<-ggtitle("Mappa della concentrazione PM10 in Lombardia nel 2017")
+title<-ggtitle("Concentration map of PM10 in Lombardy in 2017")
 plot+layer1+layer2+scale_fill_gradient(low="#FEEBE2", high="#03730f",limits=c(2.25, 4.25), breaks=seq(2.75,4.25,by=0.5))+coord_equal() + title + labs(fill = "Logaritmo della concentrazione di PM10") 
 
 ## 2015
@@ -161,7 +161,7 @@ plot<-ggplot(data=idw.o,aes(x=long,y=lat))
 #plot iniziale
 layer1<-c(geom_tile(data=idw.o,aes(fill=logp.pred))) #layer valori stimati per pixel
 layer2<-c(geom_path(data=lomb_line,aes(long, lat, group = group),colour = "grey20", size=1)) # layer con confini comune
-title<-ggtitle("Mappa della concentrazione PM10 in Lombardia nel 2015")
+title<-ggtitle("Concentration map of PM10 in Lombardy in 2015")
 plot+layer1+layer2+scale_fill_gradient(low="#FEEBE2", high="#03730f", limits=c(2.25, 4.25), breaks=seq(2.75,4.25,by=0.5))+coord_equal() + title + labs(fill = "Logaritmo della concentrazione di PM10") 
 #FEEBE2
 
@@ -194,7 +194,7 @@ plot<-ggplot(data=idw.o,aes(x=long,y=lat))
 #plot iniziale
 layer1<-c(geom_tile(data=idw.o,aes(fill=logp.pred))) #layer valori stimati per pixel
 layer2<-c(geom_path(data=lomb_line,aes(long, lat, group = group),colour = "grey20", size=1)) # layer con confini comune
-title<-ggtitle("Mappa della concentrazione PM10 in Lombardia nel 2013")
+title<-ggtitle("Concentration map of PM10 in Lombardy in 2013")
 plot+layer1+layer2+scale_fill_gradient(low="#FEEBE2", high="#03730f",limits=c(2.25, 4.25), breaks=seq(2.75,4.25,by=0.5))+coord_equal() + title + labs(fill = "Logaritmo della concentrazione di PM10") 
 
 ## 2011
@@ -226,6 +226,6 @@ plot<-ggplot(data=idw.o,aes(x=long,y=lat))
 #plot iniziale
 layer1<-c(geom_tile(data=idw.o,aes(fill=logp.pred))) #layer valori stimati per pixel
 layer2<-c(geom_path(data=lomb_line,aes(long, lat, group = group),colour = "grey20", size=1)) # layer con confini comune
-title<-ggtitle("Mappa della concentrazione PM10 in Lombardia nel 2011")
+title<-ggtitle("Concentration map of PM10 in Lombardy in 2011")
 plot+layer1+layer2+scale_fill_gradient(low="#FEEBE2", high="#03730f",limits=c(2.25, 4.25), breaks=seq(2.75,4.25,by=0.5))+coord_equal() + title + labs(fill = "Logaritmo della concentrazione di PM10") 
 

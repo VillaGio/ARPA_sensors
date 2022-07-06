@@ -51,6 +51,22 @@ plot(grid)
 # }
 # plot(ris[,"vicinato"],ris[,"R"],xlab="numero vicini",ylab="R",type="l")
 
+coordinates(d2021CO_grouped)=c("lng","lat")
+
+idw.p=idw(formula=log(name) ~ 1, locations=d2021CO_grouped , newdata=grid, 
+          nmax = 10, idp = 2)
+idw.o=as.data.frame(idw.p)
+names(idw.o)[1:3]<-c("long","lat","logp.pred")
+
+
+plot<-ggplot(data=idw.o,aes(x=long,y=lat))  
+#lomb_line <- fortify(lomb)
+#plot iniziale
+layer1<-c(geom_tile(data=idw.o,aes(fill=logp.pred))) #layer valori stimati per pixel
+layer2<-c(geom_path(data=lomb_line,aes(long, lat, group = group),colour = "grey20", size=1)) # layer COn COnfini COmune
+title<-ggtitle("Concentration map of CO in Lombardy in 2021")
+plot+layer1+layer2+scale_fill_gradient(low="#FEEBE2", high="#03730f",limits=c(-1.25, 0.5), breaks=seq(-1.25, 0.5,by=0.25))+coord_equal() + title + labs(fill = "Logaritmo della concentrazione di CO") 
+
 
 ## 10 e 2 ci piacciono COme valori di vicinato ed esponente
 
@@ -83,7 +99,7 @@ plot<-ggplot(data=idw.o,aes(x=long,y=lat))
 #plot iniziale
 layer1<-c(geom_tile(data=idw.o,aes(fill=logp.pred))) #layer valori stimati per pixel
 layer2<-c(geom_path(data=lomb_line,aes(long, lat, group = group),colour = "grey20", size=1)) # layer COn COnfini COmune
-title<-ggtitle("Mappa della concentrazione CO in Lombardia nel 2019")
+title<-ggtitle("Concentration map of CO in Lombardy in 2019")
 plot+layer1+layer2+scale_fill_gradient(low="#FEEBE2", high="#03730f",limits=c(-1.25, 0.5), breaks=seq(-1.25, 0.5,by=0.25))+coord_equal() + title + labs(fill = "Logaritmo della concentrazione di CO") 
 
 
@@ -116,7 +132,7 @@ plot<-ggplot(data=idw.o,aes(x=long,y=lat))
 #plot iniziale
 layer1<-c(geom_tile(data=idw.o,aes(fill=logp.pred))) #layer valori stimati per pixel
 layer2<-c(geom_path(data=lomb_line,aes(long, lat, group = group),colour = "grey20", size=1)) # layer COn COnfini COmune
-title<-ggtitle("Mappa della concentrazione CO in Lombardia nel 2017")
+title<-ggtitle("Concentration map of CO in Lombardy in 2017")
 plot+layer1+layer2+scale_fill_gradient(low="#FEEBE2", high="#03730f",limits=c(-1.25, 0.5), breaks=seq(-1.25, 0.5,by=0.25))+coord_equal() + title + labs(fill = "Logaritmo della concentrazione di CO") 
 
 ## 2015
@@ -148,7 +164,7 @@ plot<-ggplot(data=idw.o,aes(x=long,y=lat))
 #plot iniziale
 layer1<-c(geom_tile(data=idw.o,aes(fill=logp.pred))) #layer valori stimati per pixel
 layer2<-c(geom_path(data=lomb_line,aes(long, lat, group = group),colour = "grey20", size=1)) # layer COn COnfini COmune
-title<-ggtitle("Mappa della concentrazione CO in Lombardia nel 2015")
+title<-ggtitle("Concentration map of CO in Lombardy in nel 2015")
 plot+layer1+layer2+scale_fill_gradient(low="#FEEBE2", high="#03730f",limits=c(-1.25, 0.5), breaks=seq(-1.25, 0.5,by=0.25))+coord_equal() + title + labs(fill = "Logaritmo della concentrazione di CO") 
 #FEEBE2
 
@@ -181,7 +197,7 @@ plot<-ggplot(data=idw.o,aes(x=long,y=lat))
 #plot iniziale
 layer1<-c(geom_tile(data=idw.o,aes(fill=logp.pred))) #layer valori stimati per pixel
 layer2<-c(geom_path(data=lomb_line,aes(long, lat, group = group),colour = "grey20", size=1)) # layer COn COnfini COmune
-title<-ggtitle("Mappa della concentrazione CO in Lombardia nel 2013")
+title<-ggtitle("Concentration map of CO in Lombardy in nel 2013")
 plot+layer1+layer2+scale_fill_gradient(low="#FEEBE2", high="#03730f",limits=c(-1.25, 0.5), breaks=seq(-1.25, 0.5,by=0.25))+coord_equal() + title + labs(fill = "Logaritmo della concentrazione di CO") 
 
 ## 2011
@@ -213,6 +229,6 @@ plot<-ggplot(data=idw.o,aes(x=long,y=lat))
 #plot iniziale
 layer1<-c(geom_tile(data=idw.o,aes(fill=logp.pred))) #layer valori stimati per pixel
 layer2<-c(geom_path(data=lomb_line,aes(long, lat, group = group),colour = "grey20", size=1)) # layer COn COnfini COmune
-title<-ggtitle("Mappa della concentrazione CO in Lombardia nel 2011")
+title<-ggtitle("Concentration map of CO in Lombardy in 2011")
 plot+layer1+layer2+scale_fill_gradient(low="#FEEBE2", high="#03730f",limits=c(-1.25, 0.5), breaks=seq(-1.25, 0.5,by=0.25))+coord_equal() + title + labs(fill = "Logaritmo della concentrazione di CO") 
 
