@@ -10,27 +10,7 @@
 
 6) OK Sistemare ingestion da API: automatizzazione fatta con windows scheduler
 
-7) Fare tabella e job per storico stazioni -->
-
-FARE TABELLA DI APPOGGIO con campi: 
-	idsensore, 
-	data ultima acquisizione (ultima volta in cui il record è stato attivo), 
-	data di spegnimento (31-12 dello stesso anno)
-per creare questa tabella: query su sens_data_2022 dove stato = S e enddate = blank
-per popolare campo "data ultima acquisizione": fare update campo con query su tutte altre tabelle per trovare la prima in cui non è presente,
-		per poi andare alla tabella precedente e trovare l'ultimo record (magari ordina tabella e poi scegli ultimo?)
-per popolare campo "data di spegnimento": prendere valore in "data ultima acquisizione", estrarre anno e fare +1
-
-
-select da sorgente where storic è si e enddate è spazio. da qua cercare in altre tabelle
-
-bonificare tabella storico con endate da tab appoggio, poi tutte le volte che eseguiamo storic job mettiamo 
-
-
-
-
-
-
+7) OK Fare tabella e job per storico stazioni 
 -------------------------------------------------------------------------
-RICARICA CSV ANNI 2020 --> DBVEAR IMPALLATO DE NUEVO // POI RIFAI PICKELS
+RIFAI PICKEL SENS_DATA_2020
 

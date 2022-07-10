@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.record="http:///orgomg/cwm/resource/record.ecore">
+  <TalendMetadata:DelimitedFileConnection xmi:id="_kcVeANHLEey9EcyXNxtL-A" name="air_sensors" dataPackage="_kcVeAdHLEey9EcyXNxtL-A" Server="Localhost 127.0.0.1" FilePath="C:/Users/giorg/OneDrive/Desktop/Final Thesis/ARPA_sensors/dati_sensori_1968_2020/2000.csv" Encoding="US-ASCII" FieldSeparatorValue="&quot;,&quot;" RowSeparatorValue="&quot;\n&quot;" UseHeader="true" HeaderValue="1" FirstLineCaption="true" FieldSeparatorType="Comma"/>
+  <orgomg.cwm.resource.record:RecordFile xmi:id="_kcVeAdHLEey9EcyXNxtL-A" name="default" dataManager="_kcVeANHLEey9EcyXNxtL-A">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_kcVeAtHLEey9EcyXNxtL-A" id="_G3YLUNHLEey9EcyXNxtL-A" label="air_metadata">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_kcVeA9HLEey9EcyXNxtL-A" label="IdSensore" length="-1" talendType="id_Long" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_kcVeBNHLEey9EcyXNxtL-A" label="Data" length="-1" talendType="id_String"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_kcVeBdHLEey9EcyXNxtL-A" label="Valore" length="5" precision="4" talendType="id_Float" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_kcVeBtHLEey9EcyXNxtL-A" label="Stato" length="2" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_kcVeB9HLEey9EcyXNxtL-A" label="idOperatore" length="1" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;"/>
+    </ownedElement>
+  </orgomg.cwm.resource.record:RecordFile>
+</xmi:XMI>

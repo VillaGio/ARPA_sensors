@@ -13,3 +13,13 @@ February      5
 Comparison between data loaded on 2022-06-14 and 2022-06-21
 mese  count
  May      5
+
+Comparison between data loaded on 2022-06-21 and 2022-06-28
+Empty DataFrame
+Columns: [mese, count]
+Index: []
+
+Comparison between data loaded on 2022-06-28 and 2022-07-05
+Empty DataFrame
+Columns: [mese, count]
+Index: []

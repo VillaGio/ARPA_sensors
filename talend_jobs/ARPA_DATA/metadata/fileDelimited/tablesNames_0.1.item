@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.record="http:///orgomg/cwm/resource/record.ecore">
+  <TalendMetadata:DelimitedFileConnection xmi:id="_dsGTYPPEEeyjyK795WHDOA" name="tablesNames" dataPackage="_dsGTYfPEEeyjyK795WHDOA" Server="Localhost 127.0.0.1" FilePath="C:/Users/giorg/OneDrive/Desktop/Final Thesis/ARPA_sensors/dati_stazioni/tablesNames.txt" Encoding="US-ASCII" FieldSeparatorValue="&quot;;&quot;" RowSeparatorValue="&quot;\n&quot;" UseHeader="true" HeaderValue="1" FirstLineCaption="true"/>
+  <orgomg.cwm.resource.record:RecordFile xmi:id="_dsGTYfPEEeyjyK795WHDOA" name="default" dataManager="_dsGTYPPEEeyjyK795WHDOA">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_dsGTYvPEEeyjyK795WHDOA" id="_TZqaQPPEEeyjyK795WHDOA" label="tablesNames">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_dsGTY_PEEeyjyK795WHDOA" label="tablename" length="14" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+    </ownedElement>
+  </orgomg.cwm.resource.record:RecordFile>
+</xmi:XMI>

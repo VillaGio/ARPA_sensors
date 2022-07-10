@@ -22,7 +22,7 @@ def fromJsonFileToDf(filename):
     return df
 
 def fromJsonApiToDf(datetime):
-    url="https://www.dati.lombardia.it/resource/nicp-bhqi.json?$limit=1300000&$where=data<='%s'" %datetime #lte = < , gte = >
+    url="https://www.dati.lombardia.it/resource/nicp-bhqi.json?$limit=3000000&$where=data<='%s'" %datetime #lte = < , gte = >
 
     with urllib.request.urlopen(url) as response:
         record_list = json.loads(response.read().decode())
