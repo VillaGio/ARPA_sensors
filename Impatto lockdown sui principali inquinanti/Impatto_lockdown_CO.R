@@ -113,3 +113,51 @@ leg.txt<-c("Seasonally adjusted Values","Estimated Trend")
 legend("bottomright",leg.txt,bty="n",lwd=2,col=c("blue","red"))
 
 t.test(dati_dest, pre, "greater")# eheh si peggiora col lockdown
+
+library(lubridate)
+dati$mese<-month(dati$Data)
+dati$anno<-year(dati$Data)
+summary(dati)
+
+
+# Confronto visivo mesi lockdown ------------------------------------------
+
+mesilock2011 <- dati[dati$anno==2011 & dati$mese %in% c(2,3,4,5,6),]$Valore
+mesilock2012 <- dati[dati$anno==2012 & dati$mese %in% c(2,3,4,5,6) & dati$Data!="2012-02-29",]$Valore
+mesilock2013 <- dati[dati$anno==2013 & dati$mese %in% c(2,3,4,5,6),]$Valore
+mesilock2014 <- dati[dati$anno==2014 & dati$mese %in% c(2,3,4,5,6),]$Valore
+mesilock2015 <- dati[dati$anno==2015 & dati$mese %in% c(2,3,4,5,6),]$Valore
+mesilock2016 <- dati[dati$anno==2016 & dati$mese %in% c(2,3,4,5,6) & dati$Data!="2016-02-29",]$Valore
+mesilock2017 <- dati[dati$anno==2017 & dati$mese %in% c(2,3,4,5,6),]$Valore
+mesilock2018 <- dati[dati$anno==2018 & dati$mese %in% c(2,3,4,5,6),]$Valore
+mesilock2019 <- dati[dati$anno==2019 & dati$mese %in% c(2,3,4,5,6),]$Valore
+mesilock2020 <- dati[dati$anno==2020 & dati$mese %in% c(2,3,4,5,6) & dati$Data!="2020-02-29",]$Valore
+mesilock2021 <- dati[dati$anno==2021 & dati$mese %in% c(2,3,4,5,6),]$Valore
+
+plot(dati[dati$anno==2011 & dati$mese %in% c(2,3,4,5,6),]$Data, mesilock2021, type='l', col='red', lwd=2,
+     main="Comparison between pre and post lockdown measurements", xlab='Date', ylab='value in µg/m3',
+     ylim=c(10,60))
+#lines(dati[dati$anno==2011 & dati$mese %in% c(2,3,4,5,6),]$Data, mesilock2012, col='aquamarine4', lwd=2)
+#lines(dati[dati$anno==2011 & dati$mese %in% c(2,3,4,5,6),]$Data, mesilock2013, col='yellowgreen', lwd=2)
+#lines(dati[dati$anno==2011 & dati$mese %in% c(2,3,4,5,6),]$Data, mesilock2014, col='forestgreen', lwd=2)
+#lines(dati[dati$anno==2011 & dati$mese %in% c(2,3,4,5,6),]$Data, mesilock2015, col='turquoise2', lwd=2)
+#lines(dati[dati$anno==2011 & dati$mese %in% c(2,3,4,5,6),]$Data, mesilock2016, col='deeppink', lwd=2)
+#lines(dati[dati$anno==2011 & dati$mese %in% c(2,3,4,5,6),]$Data, mesilock2017, col='lavender', lwd=2)
+#lines(dati[dati$anno==2011 & dati$mese %in% c(2,3,4,5,6),]$Data, mesilock2018, col='yellow2', lwd=2)
+lines(dati[dati$anno==2011 & dati$mese %in% c(2,3,4,5,6),]$Data, mesilock2019, col='green', lwd=2)
+lines(dati[dati$anno==2011 & dati$mese %in% c(2,3,4,5,6),]$Data, mesilock2020, col='salmon2', lwd=2)
+lines(dati[dati$anno==2011 & dati$mese %in% c(2,3,4,5,6),]$Data, mesilock2018, col='blue', lwd=2)
+leg.txt<-c("2018","2019","2020","2021")
+legend("topright",leg.txt,bty="n",lwd=2,col=c("blue","green","salmon2","red"))
+
+## incasinato, proviamo coi valori medi
+
+mean_prelock <- (mesilock2018+mesilock2019)/2
+mean_postlock <- (mesilock2020+mesilock2021)/2
+
+plot(dati[dati$anno==2011 & dati$mese %in% c(2,3,4,5,6),]$Data, mean_prelock , type='l', col='green', 
+     lwd=2, main='Comparison between pre and post lockdown averages measurements',
+     xlab='Date', ylab='value in µg/m3', ylim = c(10,60))
+lines(dati[dati$anno==2011 & dati$mese %in% c(2,3,4,5,6),]$Data, mean_postlock, col='blue', lwd=2)
+leg.txt<-c("Pre-lockdown","Post-lockdown")
+legend("topright",leg.txt,bty="n",lwd=2,col=c("blue","green"))
