@@ -11,6 +11,12 @@
 6) OK Sistemare ingestion da API: automatizzazione fatta con windows scheduler
 
 7) OK Fare tabella e job per storico stazioni 
+
+
+8)   Riscrivi jobDescription per job SensPositionHistory
+9)   Aggiungi descrizione a funzioni in python
+10)  Sistema ordine in file Descriptive_stats.pynb
+11)  Sistema e aggiungi file .sql per manipolazioni in dbeaver
 -------------------------------------------------------------------------
 RIFAI PICKEL SENS_DATA_2020
 

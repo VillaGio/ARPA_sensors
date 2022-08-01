@@ -1,0 +1,29 @@
+{
+  "itemId" : "_x8gQoOr0EeyYIdyI1HvI6w",
+  "contextList" : [ {
+    "contextName" : "Default",
+    "repoId" : "_JoOlcNKTEeyRdNDD7jnqsQ",
+    "parameterList" : [ {
+      "id" : "_JodO8dKTEeyRdNDD7jnqsQ",
+      "name" : "postgres_woneli_Password"
+    }, {
+      "id" : "_JodO8tKTEeyRdNDD7jnqsQ",
+      "name" : "postgres_woneli_Database"
+    }, {
+      "id" : "_JodO89KTEeyRdNDD7jnqsQ",
+      "name" : "postgres_woneli_Login"
+    }, {
+      "id" : "_JodO9NKTEeyRdNDD7jnqsQ",
+      "name" : "postgres_woneli_Server"
+    }, {
+      "id" : "_JodO9dKTEeyRdNDD7jnqsQ",
+      "name" : "postgres_woneli_Port"
+    }, {
+      "id" : "_JodO9tKTEeyRdNDD7jnqsQ",
+      "name" : "postgres_woneli_Schema"
+    }, {
+      "id" : "_JodO99KTEeyRdNDD7jnqsQ",
+      "name" : "postgres_woneli_AdditionalParams"
+    } ]
+  } ]
+}

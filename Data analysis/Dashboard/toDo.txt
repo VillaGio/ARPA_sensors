@@ -1,0 +1,13 @@
+COSE DA FARE ORA:
+
+-fai corr matrix
+	-fai dataframe nel modo giusto
+
+-fai grafici lineari tutti assieme
+
+
+COSE DA FARE ALLA FINE:
+
+-aggiungi testo nel markdown
+-sistema titolo dashboard
+-pubblica dashboard 
