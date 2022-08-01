@@ -1,0 +1,46 @@
+JOB csvBulkLoad
+- gestione ora legale (as is è una catena di ifelse hardcodata) da rendere automatica
+	Come faccio a renderla automatica, cioè da dove prendo che giorno è cambiata l'ora legale?
+	Dovrei averli da qualche parte salvati a prescindere...o fare webscraping???
+- gestione duplicati? Rimangono dopo il cambio dell'ora fatto nel tmap? (se no, anticipare rimozione duplicati prima del tmap)
+	Ci sono due tipi di duplicati: 
+	duplicati perfetti non dovuti al cambio dell'ora identici in ogni aspetto (compreso il valore) --> gestiti in con lo Unique
+	duplicati dovuti al cambio dell'ora identici in tutto tranne che per il valore (perchè effettivamente fanno riferimento a due misurazioni diverse --> gestiti nel tmap
+
+- sostituire il percorso hardcodato nel tfileinput con context con il path da cui leggere i file
+	OK
+
+- bulk insert da fare direttamente senza scrivere un csv intermedio e poi inserirlo.
+	OK
+
+- valutare la possibilità di ridurre i flussi a un'unico loop su una directory contenente i file da processare/accorpare i dati e leggere un unico file
+	*Loop nella directory sarebbe comodo, ma i csv dei primi anni sono accorpati e quindi non  non sono in sequenza: 1995, 2000, 2004, 2007, 2010.
+		Come faccio a fare un loop che non sia in sequenza nella prima parte e poi lo sia nella seconda? (saprei come farlo in python tho)
+	*Leggere un unico file ha senso anche se poi devo filtrare i dati per anno per inserirli nellla tabella db giusta?
+		Filtrare è più o meno pesante che elaborare un csv alla volta?
+
+
+
+JOB deltaIngestion2022
+
+- rivedere gestione ora legale (vedi sopra)
+	OK
+- operazioni di lettura e manipolazione dei dati da API da fare una sola volta. Valutare scrittura su file output temporaneo
+	OK
+- sostituire la parte di logging con un tFlowMeter
+	OK, ma in che senso, lo attacco prima della insert e poi uso un catcher per recuperare nome tabella e count?
+	Per poi fare una insert dentro la log table con queste info con un tDBInput
+	Poi dovrei comunque calcolare la durata
+
+
+
+JOB sensorsPositionHistory
+
+- fare una select puntuale dalla tabella stations (non serve una select *)
+	Io però nel tmap checkko la condizione di update su tutti i campi, per gestire il caso in cui loro facciano un update e non gestistacano lo storico.
+	Tolgo questa funzionalità e mi fido che loro implementino lo storico? (quindi faccio solo le insert)
+
+- sostituire la parte di logging con un tFlowMeter
+	Vedi sopra
+
+{ - cambiare la logica di gestione degli issue usando una query (window function) } NO IDEA HOW TO DO IT
