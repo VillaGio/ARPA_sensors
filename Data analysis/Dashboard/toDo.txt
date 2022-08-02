@@ -1,7 +1,7 @@
 COSE DA FARE ORA:
 
 -fai corr matrix
-	-fai dataframe nel modo giusto
+	- vedi perchè dropdown method non è responsive
 
 -fai grafici lineari tutti assieme
 

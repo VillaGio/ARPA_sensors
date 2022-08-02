@@ -4,6 +4,7 @@ library(DT)  # for DT tables
 library(dplyr)  # for pipe operator & data manipulations
 library(plotly) # for data visualization and plots using plotly 
 library(ggplot2) # for data visualization & plots using ggplot2
+library(ggthemes)   #for ggplot themes
 library(ggtext) # beautifying text on top of ggplot
 library(maps) # for USA states map - boundaries used by ggplot for mapping
 library(ggcorrplot) # for correlation plot
@@ -95,11 +96,11 @@ dashboardPage(
                               tags$style(HTML(".js-irs-1 .irs-single, .js-irs-1 .irs-bar-edge, .js-irs-1 .irs-bar {background: #2b3e50; border-top: #2b3e50; border-bottom: #2b3e50}")),
                               
                               fluidRow(
-                                column(6, box(selectInput("yearCorr", label = "Year:", choices = list("2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021")), width = NULL, solidHeader = TRUE),
-                                       box(plotOutput("corrYear"), width = NULL, solidHeader = TRUE, background = "navy")),
+                                column(6, box(selectInput("yearCorr", label = "Year:", choices = list("Global", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021")), width = NULL, solidHeader = TRUE),
+                                          box(plotOutput("corrPoll"), width = NULL, solidHeader = TRUE)),
                                
                                 column(6, box(selectInput("pollCorr", label = "Pollutant:", choices = list("PM10", "PM2.5", "CO - Carbon Monoxide","O3 - Ozone", "NO - Nitric Oxide", "NO2 - Nitrogen Dioxide")), width = NULL, solidHeader = TRUE),
-                                          box(plotOutput("corrPoll"), width = NULL, solidHeader = TRUE, background = "navy"))
+                                          box(plotOutput("corrYear"), width = NULL, solidHeader = TRUE))
                               )
                      )
                               )

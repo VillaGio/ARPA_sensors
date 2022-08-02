@@ -5,7 +5,7 @@ library(vroom) # fats reading/importing csv data
 library(sf) #spatial data
 library(tigris) #geojoin
 
-
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 #################### SHAPEFILES FOR POLYGONS ####################
 
@@ -67,11 +67,11 @@ for(year in 2021:2011){
 }
 
 
-write.csv(dati_day, "C:\\Users\\giorg\\OneDrive\\Desktop\\Final Thesis\\shiny\\arpa_maps\\dati_daily.csv", row.names = FALSE)
+write.csv(dati_day, "./data/dati_daily.csv", row.names = FALSE)
 
 
 #Multiple years csv
-dati_day <- read.csv("C:\\Users\\giorg\\OneDrive\\Desktop\\Final Thesis\\shiny\\arpa_maps\\dati_daily.csv")
+dati_day <- read.csv("./data/dati_daily.csv")
 
 for (year in c(2010, 2007, 2004)){
   
@@ -112,18 +112,18 @@ for (year in c(2010, 2007, 2004)){
 }
 
 
-write.csv(dati_day, "C:\\Users\\giorg\\OneDrive\\Desktop\\Final Thesis\\shiny\\arpa_maps\\dati_daily.csv", row.names = FALSE)
+write.csv(dati_day, "./data/dati_daily.csv", row.names = FALSE)
 
 
 
 #################### AGGREGATE DF ON DATE ONLY FOR PLOT REPRESENTATION OF POLLUTANTS ####################
-dati_day <- read.csv("C:\\Users\\giorg\\OneDrive\\Desktop\\Final Thesis\\shiny\\arpa_maps\\dati_daily.csv")
+dati_day <- read.csv("./data/dati_daily.csv")
 
 dati_small <- dati_day %>% 
   group_by(dataora, NomeTipoSensoreENG, anno) %>%
   summarise_at(vars(valore), list(valore = mean))
 
-write.csv(dati_small, "C:\\Users\\giorg\\OneDrive\\Desktop\\Final Thesis\\shiny\\arpa_maps\\dati_small.csv", row.names = FALSE)
+write.csv(dati_small, "./data/dati_small.csv", row.names = FALSE)
 
 
 #################### AGGREGATE DF ON YEAR FOR MAP REPRESENTATION OF POLLUTANTS ####################
@@ -182,11 +182,11 @@ for(year in 2021:2011){
 }
 
 
-write.csv(dati_all, "C:\\Users\\giorg\\OneDrive\\Desktop\\Final Thesis\\shiny\\arpa_maps\\dati_all.csv", row.names = FALSE)
+write.csv(dati_all, "./data/dati_all.csv", row.names = FALSE)
 
 
 #Multiple years csv
-dati_all <- read.csv("C:\\Users\\giorg\\OneDrive\\Desktop\\Final Thesis\\shiny\\arpa_maps\\dati_all.csv")
+dati_all <- read.csv("./data/dati_all.csv")
 
 for (year in c(2010, 2007, 2004)){
   
@@ -242,11 +242,11 @@ for (year in c(2010, 2007, 2004)){
 }
 
 
-write.csv(dati_all, "C:\\Users\\giorg\\OneDrive\\Desktop\\Final Thesis\\shiny\\arpa_maps\\dati_all.csv", row.names = FALSE)
+write.csv(dati_all, "./data/dati_all.csv", row.names = FALSE)
 
 
 #Join with shape file
-dati_all <- read.csv( "C:\\Users\\giorg\\OneDrive\\Desktop\\Final Thesis\\shiny\\arpa_maps\\dati_all.csv")
+dati_all <- read.csv( "./data/dati_all.csv")
 df_all <- geo_join(shapef, dati_all, "SIGLA", "Provincia", how = "inner")
 
 
@@ -255,7 +255,7 @@ df_all <- df_all %>% drop_na(ProvinciaLong)
 
 
 #Save df for shiny app 
-save(df_all, file = "df_all.RData")
+save(df_all, file = "./data/df_all.RData")
 
 
 
@@ -332,7 +332,7 @@ staz <- staz %>% drop_na(ProvinciaLong)
 
 
 #Save for shiny app
-save(staz, file = "C:\\Users\\giorg\\OneDrive\\Desktop\\Final Thesis\\shiny\\arpa_maps\\stazioni.RData")
+save(staz, file = "./data/stazioni.RData")
 
 
 
@@ -349,7 +349,7 @@ for (inq in unique(df_all$NomeTipoSensoreENG)){
 df_max <- df_max[, 7:12]
 df_max$`CO - Carbon Monoxide`<-3.1
 df_max[2,] <- c("YlOrBr", "PuBu", "Greys", "YlOrRd", "OrRd", "Oranges")
-write.csv(df_max, "C:\\Users\\giorg\\OneDrive\\Desktop\\Final Thesis\\shiny\\arpa_maps\\df_max.csv", row.names = FALSE)
+write.csv(df_max, "./data/df_max.csv", row.names = FALSE)
 
 
 
@@ -364,7 +364,7 @@ for (inq in unique(dati_day$NomeTipoSensoreENG)){
 }
 df_max_day <- df_max_day[1, 7:12]
 df_max_day[2,] <- c("YlOrBr", "PuBu", "Greys", "YlOrRd", "OrRd", "Oranges")
-write.csv(df_max_day, "C:\\Users\\giorg\\OneDrive\\Desktop\\Final Thesis\\shiny\\arpa_maps\\df_max_day.csv", row.names = FALSE)
+write.csv(df_max_day, "./data/df_max_day.csv", row.names = FALSE)
 
 
 
@@ -374,13 +374,68 @@ df_max_small <- data.frame(matrix(ncol = 6, nrow = 2))
 
 for (inq in unique(dati_small$NomeTipoSensoreENG)){
   print(inq)
-  #inq = "NO2 - Nitrogen Dioxide"
   m <- round_any(max(dati_small$valore[dati_small$NomeTipoSensoreENG == inq]),2)
   df_max_small[inq] = m
 }
 df_max_small <- df_max_small[1, 7:12]
 df_max_small[2,] <- c("Greys", "YlOrBr", "YlOrRd", "PuBu","OrRd", "Oranges")
-write.csv(df_max_small, "C:\\Users\\giorg\\OneDrive\\Desktop\\Final Thesis\\shiny\\arpa_maps\\df_max_small.csv", row.names = FALSE)
+write.csv(df_max_small, "./data/df_max_small.csv", row.names = FALSE)
 
 
 
+#################### DF FOR CORRELATION AMONG POLLUTANTS ###########################
+for (i in 1:length(unique(dati_small$NomeTipoSensoreENG))){
+  inq = unique(dati_small$NomeTipoSensoreENG)[i]
+  if(i == 1){
+    p <- dati_small %>%
+      filter(NomeTipoSensoreENG==inq) %>%
+      select(dataora, anno, valore)
+    names(p)[names(p) == "valore" ] <- inq
+    names(p) <-gsub(" .*$", "", names(p))
+    df_corr_poll <- p
+  }
+  else{
+    p <- dati_small %>%
+      filter(NomeTipoSensoreENG==inq) %>%
+      select(dataora, anno, valore)
+    names(p)[names(p) == "valore" ] <- inq
+    names(p) <-gsub(" .*$", "", names(p))
+    df_corr_poll <- merge(df_corr_poll, p, by.x = c("dataora", "anno"), by.y = c("dataora", "anno"))
+  }
+}
+
+# PM2.5 had too few values in year prior to 2006, just drop the years or analysis will be biased
+df_corr_poll <- df_corr_poll%>% filter(anno != 2001 & anno !=2005)
+
+# Save for shiny app
+save(df_corr_poll,file = "./data/df_corr_poll.RData")
+
+
+
+#################### DF FOR CORRELATION AMONG YEARS ###########################
+df_year <- dati_small
+df_year$dataora <- sub(".*?-",'',df_year$dataora)   
+
+for (i in 6:21){
+  a = unique(df_year$anno)[i]
+  if(i == 6){
+    p <- df_year %>%
+      filter(anno==a) %>%
+      select(NomeTipoSensoreENG, dataora, valore)
+    names(p)[names(p) == "valore" ] <- a
+    df_corr_year <- p
+  }
+
+else if(i >6){
+    p <- df_year %>%
+      filter(anno==a) %>%
+      select(NomeTipoSensoreENG, dataora, valore)
+    names(p)[names(p) == "valore" ] <- a
+    df_corr_year <- merge(df_corr_year, p, by.x = c("NomeTipoSensoreENG", "dataora" ), by.y = c("NomeTipoSensoreENG", "dataora"))
+  }
+}
+
+df_corr_year$NomeTipoSensoreENG <- gsub(" .*$", "", df_corr_year$NomeTipoSensoreENG)
+
+# Save for shiny app
+save(df_corr_year,file = "./data/df_corr_year.RData")
