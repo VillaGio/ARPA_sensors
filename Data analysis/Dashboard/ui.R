@@ -4,6 +4,7 @@ library(DT)  # for DT tables
 library(dplyr)  # for pipe operator & data manipulations
 library(plotly) # for data visualization and plots using plotly 
 library(ggplot2) # for data visualization & plots using ggplot2
+library(ggthemes)   #for ggplot themes
 library(ggtext) # beautifying text on top of ggplot
 library(maps) # for USA states map - boundaries used by ggplot for mapping
 library(ggcorrplot) # for correlation plot
@@ -100,6 +101,7 @@ dashboardPage(
                                
                                 column(6, box(selectInput("pollCorr", label = "Pollutant:", choices = list("PM10", "PM2.5", "CO - Carbon Monoxide","O3 - Ozone", "NO - Nitric Oxide", "NO2 - Nitrogen Dioxide")), width = NULL, solidHeader = TRUE),
                                           box(plotOutput("corrPoll"), width = NULL, solidHeader = TRUE, background = "navy"))
+                             
                               )
                      )
                               )
