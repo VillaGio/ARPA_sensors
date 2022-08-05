@@ -157,6 +157,39 @@ function(input, output, session){
   
   
   
+  # Correlation matrix on years in Visualization -> Correlation Matrix
+  
+  output$corrYear <- renderPlot({
+    
+    react_corr_year  <- reactive({
+      
+      df<-dati_small %>%
+        select(meseGiorno, NomeTipoSensoreENG, valore, anno) %>%
+        filter(anno == input$yearCorr)%>%
+        select(meseGiorno, valore, NomeTipoSensoreENG) #%>%
+        #filter(meseGiorno != "01-01" & meseGiorno != "02-29")
+      df  <- reshape(df , idvar = "meseGiorno" , timevar = "NomeTipoSensoreENG", direction = "wide")
+      print(head(df))
+      colnames(df)<-c("meseGiorno","CO","NO","NO2","O3","PM10","PM2.5")
+      
+      return(df)
+    })
+    
+  
+    
+    #LABEL
+    #pol <- gsub(" .*$", "", react_corr_year()$NomeTipoSensoreENG[1])
+    
+    
+    # Create correlation matrix for years
+    
+    #react_corr_year  <- reshape(react_corr_year()[,-1] , idvar = "meseGiorno" , timevar = "anno", direction = "wide")
+    df_corr_year <- cor(react_corr_year()[,-1], use="complete", method = "pearson")
+    ggcorrplot(df_corr_year, method = "square", type = "lower", lab=T,  lab_size = 4, 
+               title=paste0("Pollutants correlation in year ", input$yearCorr), show.diag = F, 
+               colors = c("#154c79", "#e8dbd6", "#901736") )
+  
+=======
   # Correlation matrix on years in VIsualization -> Correlation Matrix
   output$corrYear <- renderPlot({
     
@@ -182,6 +215,30 @@ function(input, output, session){
   output$corrPoll <- renderPlot({
     
     react_corr_poll  <- reactive({
+     
+      df<-dati_small %>%
+        select(meseGiorno, NomeTipoSensoreENG, valore, anno) %>%
+        filter(anno != "2001" & anno != "2002" & anno != "2003" & anno != "2004")%>%
+        filter(NomeTipoSensoreENG == input$pollCorr)%>%
+        select(meseGiorno, valore, anno) %>%
+        filter(meseGiorno != "01-01" & meseGiorno != "02-29")
+      df  <- reshape(df , idvar = "meseGiorno" , timevar = "anno", direction = "wide")
+      #print(head(df))
+      colnames(df)<-c("meseGiorno","2005","2006","2007","2008","2009"
+                      ,"2010","2011","2012","2013","2014","2015","2016","2017","2018","2019",
+                      "2020","2021")
+      return(df)
+    })
+
+    # Create correlation matrix for years
+    df_corr_poll <- cor(react_corr_poll()[,-1], use="complete", method = "pearson")
+    ggcorrplot(df_corr_poll, method = "square", type = "lower", lab=T,  lab_size = 2, 
+               title=paste0("Correlation of ", input$pollCorr, " in years" ), show.diag = F, 
+               colors = c("#154c79", "#e8dbd6", "#901736")  ) 
+    
+  })
+#title = paste0("Pollutant correlation in year ", input$yearCorr ), ggtheme = theme_tufte(), show.diag = F, colors = c("#154c79", "#e8dbd6", "#901736")
+
       if(input$yearCorr == "Global"){
         return(df_corr_poll)
       }
@@ -205,6 +262,7 @@ function(input, output, session){
             panel.grid.major = element_blank(), 
             panel.grid.minor = element_blank()) #ggtheme = theme_tufte(),
   })
+
   
   
   
@@ -212,12 +270,13 @@ function(input, output, session){
   # Plot Output in Interactive Maps -> Pollutants Concentration
   output$concentration <- renderLeaflet({
     
-    #REACTIVE function to get user input in Pollutants Concentration
+
+    # REACTIVE function to get user input in Pollutants Concentration
     user_select <- reactive({
       w <- df_all %>% filter(anno == input$year, NomeTipoSensoreENG == input$pollutant )
       return(w)
     })
-  
+
     #TRY-CATCH to avoid displaying error messages if input data is invalid
     validate(need(user_select()$NomeTipoSensoreENG[1], message = paste0(input$pollutant, " data not provided for year ",input$year, "." )))
     
