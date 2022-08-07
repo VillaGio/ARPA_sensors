@@ -1,22 +1,17 @@
-1) OK Cambia case sensitive, fai rename...tutti campi in minuscolo senza virgolette 
+-  Esegui ddl per creazione tabella stations_weather
 
-2) OK Controlla duplicati da import [rimangono i duplicati del 2022 - OK --> SCARICATI DA API ]
+-  Cambia nome a tabella stations to stations_sens e cambia tutti i nomi nei jobs
 
-3) OK Programma per controllo integrità del dato: randomicamente controlla che i dati nelle tabelle e i dati sui csv sorgente siano coerenti 
+-  Riscrivi jobDescription jobs 
 
-4) OK Creare tabella di logging --> tenere traccia di quando avvengono le cose
+-  Sistema ordine in file Descriptive_stats.pynb
 
-5) OK Per 2022: controllare ogni quanto vengono aggiornati i dati per fare 6)
+-  Prova jobs per dati meteo
 
-6) OK Sistemare ingestion da API: automatizzazione fatta con windows scheduler
+-  su postgres filtra i duplicati e i dati non validi
 
-7) OK Fare tabella e job per storico stazioni 
+-  Chiedi a Nicolas per ingestion da api, troppi dati e si blocca
 
-
-8)   Riscrivi jobDescription per job SensPositionHistory
-9)   Aggiungi descrizione a funzioni in python
-10)  Sistema ordine in file Descriptive_stats.pynb
-11)  Sistema e aggiungi file .sql per manipolazioni in dbeaver
 -------------------------------------------------------------------------
-RIFAI PICKEL SENS_DATA_2020
+- fai diagrammi di flusso per jobs
 

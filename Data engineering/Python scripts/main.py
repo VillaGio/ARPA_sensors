@@ -3,6 +3,12 @@ from integrity_functions import *
 from postgres_functions import *
 from update_functions import *
 
+"""
+Extended Main to perform utility operations as: 
+ - generating pickle files of DB tables
+ - performing integrity checks between data in DB tables and data in source CSV
+ - checking for number of updates in data retrived from API for further optimization pursposes
+"""
 
 
 def main():
