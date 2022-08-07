@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmi:id="_xqbLABC4Ee2u54ayzz1g8w" confirmationNeeded="false" name="Default">
+  <contextParameter xmi:id="_xqbLARC4Ee2u54ayzz1g8w" comment="" name="sensors_path_input" prompt="Select path of sensors data csv files" promptNeeded="false" repositoryContextId="built-in" type="id_Directory" value="C:/Users/giorg/OneDrive/Desktop/Final Thesis/ARPA_sensors/Data engineering/Data/Sensors/original/"/>
+  <contextParameter xmi:id="_t20_gBPXEe2PZ5Brpncq4g" comment="" name="sensors_path_output" prompt="sensors_path_output?" promptNeeded="false" repositoryContextId="built-in" type="id_Directory" value="C:/Users/giorg/OneDrive/Desktop/Final Thesis/ARPA_sensors/Data engineering/Data/Sensors/modifiedForBulk/"/>
+  <contextParameter xmi:id="_3PNpIBSxEe2LPaOiXgeo7A" comment="" name="weather_path_input" prompt="weather_path_input?" promptNeeded="false" repositoryContextId="built-in" type="id_Directory" value="C:/Users/giorg/OneDrive/Desktop/Final Thesis/ARPA_sensors/Data engineering/Data/Weather/original/"/>
+  <contextParameter xmi:id="_3PNpIRSxEe2LPaOiXgeo7A" comment="" name="weather_path_output" prompt="weather_path_output?" promptNeeded="false" repositoryContextId="built-in" type="id_Directory" value="C:/Users/giorg/OneDrive/Desktop/Final Thesis/ARPA_sensors/Data engineering/Data/Weather/modifiedForBulk/"/>
+</talendfile:ContextType>

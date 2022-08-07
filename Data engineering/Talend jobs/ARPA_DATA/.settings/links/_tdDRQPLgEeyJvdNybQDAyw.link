@@ -2,53 +2,28 @@
   "itemId" : "_tdDRQPLgEeyJvdNybQDAyw",
   "contextList" : [ {
     "contextName" : "Default",
-    "repoId" : "_uxokcLmOEeyZ5N7sUffbUA",
+    "repoId" : "_PmzeQBTiEe22LfQaOsWnxA",
     "parameterList" : [ {
-      "id" : "_uxyVcbmOEeyZ5N7sUffbUA",
-      "name" : "postgres_Schema"
+      "id" : "_PnieFxTiEe22LfQaOsWnxA",
+      "name" : "postgresWoneli_AdditionalParams"
     }, {
-      "id" : "_uxyVcrmOEeyZ5N7sUffbUA",
-      "name" : "postgres_Server"
+      "id" : "_PnieFhTiEe22LfQaOsWnxA",
+      "name" : "postgresWoneli_Database"
     }, {
-      "id" : "_uxyVc7mOEeyZ5N7sUffbUA",
-      "name" : "postgres_Port"
+      "id" : "_PnieExTiEe22LfQaOsWnxA",
+      "name" : "postgresWoneli_Login"
     }, {
-      "id" : "_uxyVdLmOEeyZ5N7sUffbUA",
-      "name" : "postgres_AdditionalParams"
+      "id" : "_PnieFRTiEe22LfQaOsWnxA",
+      "name" : "postgresWoneli_Password"
     }, {
-      "id" : "_uxyVdbmOEeyZ5N7sUffbUA",
-      "name" : "postgres_Password"
+      "id" : "_PnieERTiEe22LfQaOsWnxA",
+      "name" : "postgresWoneli_Port"
     }, {
-      "id" : "_uxyVdrmOEeyZ5N7sUffbUA",
-      "name" : "postgres_Login"
+      "id" : "_PnieEhTiEe22LfQaOsWnxA",
+      "name" : "postgresWoneli_Schema"
     }, {
-      "id" : "_uxyVd7mOEeyZ5N7sUffbUA",
-      "name" : "postgres_Database"
-    } ]
-  }, {
-    "contextName" : "Default",
-    "repoId" : "_JoOlcNKTEeyRdNDD7jnqsQ",
-    "parameterList" : [ {
-      "id" : "_JodO8tKTEeyRdNDD7jnqsQ",
-      "name" : "postgres_woneli_Database"
-    }, {
-      "id" : "_JodO9tKTEeyRdNDD7jnqsQ",
-      "name" : "postgres_woneli_Schema"
-    }, {
-      "id" : "_JodO8dKTEeyRdNDD7jnqsQ",
-      "name" : "postgres_woneli_Password"
-    }, {
-      "id" : "_JodO99KTEeyRdNDD7jnqsQ",
-      "name" : "postgres_woneli_AdditionalParams"
-    }, {
-      "id" : "_JodO9NKTEeyRdNDD7jnqsQ",
-      "name" : "postgres_woneli_Server"
-    }, {
-      "id" : "_JodO9dKTEeyRdNDD7jnqsQ",
-      "name" : "postgres_woneli_Port"
-    }, {
-      "id" : "_JodO89KTEeyRdNDD7jnqsQ",
-      "name" : "postgres_woneli_Login"
+      "id" : "_PnieFBTiEe22LfQaOsWnxA",
+      "name" : "postgresWoneli_Server"
     } ]
   } ]
 }
