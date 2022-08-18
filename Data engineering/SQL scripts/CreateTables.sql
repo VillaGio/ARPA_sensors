@@ -57,7 +57,8 @@ CREATE TABLE stations_weather(
 ---Create table stations_check_datastop for stations with S and no enddate
 create table stations_check_datastop(
 idsensore int8,
-ultima_acquisizione timestamp null
+ultima_acquisizione timestamp,
+table_name varchar
 );
 
 
@@ -65,12 +66,13 @@ ultima_acquisizione timestamp null
 ---Create table stations_check_datastart for stations with no startdate
 create table stations_check_datastart(
 idsensore int8,
-prima_acquisizione timestamp null
+prima_acquisizione timestamp,
+table_name varchar
 );
 
 
 
----Create table for sensors data
+---Create tables for sensors data
 create table sens_data_2022 (
 	idsensore int8 NULL,
 	dataora timestamp NULL,
@@ -81,7 +83,7 @@ create table sens_data_2022 (
 
 
 
----Create table for weather data
+---Create tables for weather data
 create table weather_data_2022 (
 	idsensore int8 NULL,
 	dataora timestamp NULL,
@@ -90,3 +92,15 @@ create table weather_data_2022 (
 	idoperatore int4 NULL
 );
 
+
+---Create table rejected for rejected rows in sens_/weather_ data tables
+create table rejected (
+	"current_date" timestamp default current_timestamp,
+	tabella varchar,
+	idsensore int8,
+	"data" varchar,
+	valore float8,
+	stato varchar,
+	idoperatore int8,
+	errormessage varchar
+);

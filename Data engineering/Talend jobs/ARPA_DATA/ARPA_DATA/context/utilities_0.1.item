@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmi:id="_OZ5agBmpEe2t7YhvJP2yRw" confirmationNeeded="false" name="Default">
+  <contextParameter xmi:id="_OZ5agRmpEe2t7YhvJP2yRw" comment="" name="operation" prompt="operation?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;Bulk insert&quot;"/>
+  <contextParameter xmi:id="_sPvrYB03Ee2z1N-RZYP5cA" comment="" name="category" prompt="category?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;weather_data_&quot;"/>
+  <contextParameter xmi:id="_aVluwB0-Ee2z1N-RZYP5cA" comment="" name="table_name" prompt="table_name?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value=""/>
+  <contextParameter xmi:id="_aVluwR0-Ee2z1N-RZYP5cA" comment="" name="num_rows" prompt="num_rows?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value=""/>
+  <contextParameter xmi:id="_aVluwh0-Ee2z1N-RZYP5cA" comment="" name="duration" prompt="duration?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value=""/>
+  <contextParameter xmi:id="_6_v7AB1CEe2z1N-RZYP5cA" comment="" name="truncate" prompt="truncate?" promptNeeded="false" repositoryContextId="built-in" type="id_Boolean" value=""/>
+  <contextParameter xmi:id="_8YOCcB1FEe2z1N-RZYP5cA" comment="" name="csv_to_split" prompt="csv_to_split?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value=""/>
+</talendfile:ContextType>

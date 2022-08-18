@@ -3,7 +3,7 @@ from random import randint
 import pandas as pd
 
 
-def getSortedCsv(year: int):
+def getSortedCsv(year : int, kind : str):
     """Returns the sorted version of the csv corresponding to the specified year.
        Sorting is applied according to fields 'dataora' and 'idsensore'.
 
@@ -11,6 +11,8 @@ def getSortedCsv(year: int):
     ----------
     year : int
         The year corresponding to the csv name to be sorted
+    kind : str
+        Takes values either "sens" or "weather", to fetch csv either of sensors or weather data.
      
     Returns
     -------
@@ -19,13 +21,16 @@ def getSortedCsv(year: int):
     """
 
     # Path of the csv to be sorted
-    path = "../Data/Sensors/modifiedForBulk/mod_%d.csv" % year
+    if kind == "sens":
+        path = "../Data/Sensors/modifiedForBulk/mod_%d.csv" % year
+    else:
+        path = "../Data/Weather/modifiedForBulk/mod_%d.csv" % year
 
     # Read csv
-    csv = pd.read_csv(path, na_filter = False)
+    csv = pd.read_csv(path, na_filter = False, delimiter = ";")
 
     # Convert field dataora to datetime in order to sort for date
-    csv["dataora"] = pd.to_datetime(csv["dataora"], format="%Y/%m/%d %H:%M:%S")
+    csv["dataora"] = pd.to_datetime(csv["dataora"], format='%Y-%m-%d %H:%M:%S')
 
     # Sort csv according to datetime and idsensore
     csv = csv.sort_values(["dataora","idsensore"])
@@ -36,7 +41,8 @@ def getSortedCsv(year: int):
     # Return sorded csv
     return csv
 
-def getSortedDbTable(year: int):
+
+def getSortedDbTable(year : int, kind : str):
     """Returns the sorted version of the DB table (through its pickle file) corresponding to the specified year.
        Sorting is applied according to fields 'dataora' and 'idsensore'.
 
@@ -44,6 +50,8 @@ def getSortedDbTable(year: int):
     ----------
     year : int
         The year corresponding to the csv name to be sorted
+    kind : str
+        Takes values either "sens" or "weather", to fetch pickle either of sensors or weather data table.    
      
     Returns
     -------
@@ -51,7 +59,10 @@ def getSortedDbTable(year: int):
         The sorted dataframe of the provided DB table
     """
     # Path of the DB table pickle to be sorted
-    path = "../Pickle files/db_%d.h5" % year
+    if kind == "sens":
+        path = "../Pickle files/PickleS/db_%d.h5" % year
+    else:
+        path = "../Pickle files/PickleW/db_%d.h5" % year
 
     # Read pickle file to df
     df = pd.read_pickle(path)
@@ -64,6 +75,7 @@ def getSortedDbTable(year: int):
 
     # Return sorted table
     return df
+
 
 def checkSize(sourceCsvFile, dbTable):
     """Checks whether the source cvs file and the mirrored DB table have equal number of records.
@@ -136,8 +148,7 @@ def checkRecordConsistency(sourceCsvFile, dbTable):
         print("   \nTotal number of inconsistent rows: %d." % wrong_count)
 
 
-
-def checkIntegrity(year):
+def checkIntegrity(year: int, kind : str):
     """Performs an integrity check between the source csv file and DB table by
         checking their total number of records and comparing the values in fields of 100000 random records.
     
@@ -145,35 +156,51 @@ def checkIntegrity(year):
     ----------
     year: int
         The year corresponding to the name of the sourceCsvFile and to the data stored in the dbTable to comapare
-     
+    kind : str
+        Takes values either "sens" or "weather", to perform integrity check either of sensors or weather data.
+
     Returns
     -------
     None
     """
 
-    # Check whether to use user-specified year of default list
-    if year == 0:
+    if kind not in["sens", "weather"]:
+         raise Exception("Invalid argument: "+ kind + ". Argument kind can only be assigned values 'sens' or 'weather'")
+    
+    if kind == "sens":
         # Generate a list with values 1995, 2000, 2004, 2007 and from 2010 to current year
         year_list = [1995, 2000, 2004, 2007]
         current_year = int(date.today().year)
         new_years = range(2010, current_year+1)
         year_list.extend(new_years)
-    else:
-        year_list = [year]
+    elif kind == "weather":
+        # Generate a list with values 2000, 2005, 2008, 2010, and from 2012 to current year
+        year_list = [2000, 2005, 2008, 2010]
+        current_year = int(date.today().year)
+        new_years = range(2012, current_year+1)
+        year_list.extend(new_years)
+
+    # Check whether to use user-specified year of default list
+    if year != 0:
+        if year not in year_list:
+            raise Exception("Data not present for this year. Available years are: " + str(year_list).strip("[]") + ".")
+        else:
+            year_list = [year]
+    
 
     print("\nIntegrity check started.")
 
     # Perform integrity check for the specified year(s)
     for year in year_list:
-        print("\nIntegrity check for %d data: " % year)
+        print("\nIntegrity check for %d %s data: " % (year, kind))
         print("> Getting source csv file for comparision...")
 
         # Sort csv so that indexes are comparable with the ones of DBtable
-        csv = getSortedCsv(year)
+        csv = getSortedCsv(year, kind)
         print("> Getting database table for comparision...")
 
         # Sort DBtable so that indexes are comparable with the ones of csv
-        df = getSortedDbTable(year)
+        df = getSortedDbTable(year, kind)
 
         # Check for consistency in umber of records
         equalSize = checkSize(csv, df)

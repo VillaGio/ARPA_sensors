@@ -23,20 +23,21 @@ def postgresConnection():
                             password="woneli",
                             host="188.165.216.169",
                             port="5432",
-                            database="postgres")
+                            database="postgres01")
 
         # Create a cursor to perform database operations
         cursor = connection.cursor()
         
         # Print PostgreSQL details
-        print("PostgreSQL server information: ")
-        print(connection.get_dsn_parameters(), "\n")
+        #print("PostgreSQL server information: ")
+        #print(connection.get_dsn_parameters(), "\n")
         print("Connection established \n")
         
         return connection, cursor
     
     except (Exception, Error) as error:
         print("Error while connecting to PostgreSQL: ", error)
+
 
 def closeConnection(connection, cursor):
     """Closes the provided cursor and connection.
@@ -62,13 +63,16 @@ def closeConnection(connection, cursor):
     # Display info message
     print("\nPostgreSQL connection closed.")
 
-def getTable(year: int, cursor):
+
+def getTable(year: int, kind: str, cursor):
     """Execute a SELECT * FROM ... query on data of the specified year.
 
     Parameters
     ----------
     year : int
         The year of the data stored in the table to retrieve
+    kind : str
+        Takes values either "sens" or "weather", to fetch tables either of sensors or weather data.
     cursor : psycopg2.cursor
         The cursor to be used to execute the Postgres command to retrieve the table data
         
@@ -79,9 +83,14 @@ def getTable(year: int, cursor):
     """
     
     # Execute select query
-    cursor.execute("SELECT * FROM sens_data_%d;" % year)
+    q = "SELECT * FROM %s_data_%d;" % (kind, year)
+    cursor.execute(q)
 
+    # Get query result
+    tab = cursor.fetchall()
+    
     # Returns query results
-    return cursor.fetchall()
+    return tab
 
 
+ 

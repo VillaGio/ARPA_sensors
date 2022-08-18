@@ -1,17 +1,19 @@
--  Esegui ddl per creazione tabella stations_weather
 
--  Cambia nome a tabella stations to stations_sens e cambia tutti i nomi nei jobs
+TALEND
 
--  Riscrivi jobDescription jobs 
+-  su postgres non filtra i duplicati
 
--  Sistema ordine in file Descriptive_stats.pynb
+-  non va autmazione job con Windows scheduler
 
--  Prova jobs per dati meteo
 
--  su postgres filtra i duplicati e i dati non validi
+	----
+	Fine:
 
--  Chiedi a Nicolas per ingestion da api, troppi dati e si blocca
+	-  Riscrivi jobDescription jobs 
 
--------------------------------------------------------------------------
-- fai diagrammi di flusso per jobs
+	-  Fai diagrammi di flusso
 
+
+PYHTON
+
+- non va il main, chiedi a Luca/Ste

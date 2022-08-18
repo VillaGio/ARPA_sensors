@@ -155,67 +155,69 @@ function(input, output, session){
   })
   
   
-  
-  
+
   # Correlation matrix on years in Visualization -> Correlation Matrix
-  
-  output$corrYear <- renderPlot({
+  output$corrYear <- renderPlotly({
     
+    # REACTIVE function to get user input and and build matrix suitable for correlation computation
     react_corr_year  <- reactive({
       
-      df<-dati_small %>%
-        select(meseGiorno, NomeTipoSensoreENG, valore, anno) %>%
-        filter(anno == input$yearCorr)%>%
-        select(meseGiorno, valore, NomeTipoSensoreENG) #%>%
-        #filter(meseGiorno != "01-01" & meseGiorno != "02-29")
-      df  <- reshape(df , idvar = "meseGiorno" , timevar = "NomeTipoSensoreENG", direction = "wide")
-      print(head(df))
-      colnames(df)<-c("meseGiorno","CO","NO","NO2","O3","PM10","PM2.5")
+      if(input$yearCorr == "Global"){
+        
+        df<-dati_small %>%
+          select(meseGiorno, NomeTipoSensoreENG, valore, anno) %>%
+          select(meseGiorno, valore, NomeTipoSensoreENG)
+        df  <- reshape(df , idvar = "meseGiorno" , timevar = "NomeTipoSensoreENG", direction = "wide")
+        colnames(df)<-c("meseGiorno","CO","NO","NO2","O3","PM10","PM2.5")
+        
+      }else{
+        
+        df<-dati_small %>%
+          select(meseGiorno, NomeTipoSensoreENG, valore, anno) %>%
+          filter(anno == input$yearCorr)%>%
+          select(meseGiorno, valore, NomeTipoSensoreENG) 
+        df  <- reshape(df , idvar = "meseGiorno" , timevar = "NomeTipoSensoreENG", direction = "wide")
+        colnames(df)<-c("meseGiorno","CO","NO","NO2","O3","PM10","PM2.5")
+        
+      }
       
       return(df)
     })
     
-  
     
-    #LABEL
-    #pol <- gsub(" .*$", "", react_corr_year()$NomeTipoSensoreENG[1])
+    #TITLE
+    if(input$yearCorr == "Global"){t = "Pollutant correlation on data from 2005 to 2021"}
+    else{t = paste0("Pollutant correlation in year ", input$yearCorr ) }
     
     
-    # Create correlation matrix for years
-    
-    #react_corr_year  <- reshape(react_corr_year()[,-1] , idvar = "meseGiorno" , timevar = "anno", direction = "wide")
+    # Correlation matrix in year across pollutants
     df_corr_year <- cor(react_corr_year()[,-1], use="complete", method = "pearson")
-    ggcorrplot(df_corr_year, method = "square", type = "lower", lab=T,  lab_size = 4, 
-               title=paste0("Pollutants correlation in year ", input$yearCorr), show.diag = F, 
-               colors = c("#154c79", "#e8dbd6", "#901736") )
-  
-=======
-  # Correlation matrix on years in VIsualization -> Correlation Matrix
-  output$corrYear <- renderPlot({
     
-    react_corr_year  <- reactive({
-      print(input$pollCorr)
-      var <- gsub(" .*$", "", input$pollCorr)
-      print(var)
-      return(
-        df_corr_year %>%
-          dplyr::filter(NomeTipoSensoreENG == var))
-    })
-
-    # Create correlation matrix for years
-    df_corr <- cor(react_corr_year()[,3:17], use="complete", method = "pearson")
-    ggcorrplot(df_corr, method = "square", type = "lower", title = paste0("Correlation across years of ",react_corr_year()$NomeTipoSensoreENG[1] ),  show.diag = F, colors = c("#154c79", "#e8dbd6", "#901736") )+
-      theme(plot.title = element_text(hjust = 0.5),
+    gg <-ggcorrplot(df_corr_year,method = "square", type = "lower", lab=T,  lab_size = 2, 
+               title=t, show.diag = F, 
+               colors = c("#154c79", "#e8dbd6", "#901736")) +
+      theme(plot.title = element_text(size = 10, hjust = 0.5),
+            legend.title=element_text(size=8),
+            legend.text = element_text(size=6),
             panel.grid.major = element_blank(), 
-            panel.grid.minor = element_blank()) #ggtheme = theme_tufte(),
-    })
-  
-  
-  # Correlation matrix on pollutants in VIsualization -> Correlation Matrix
-  output$corrPoll <- renderPlot({
+            panel.grid.minor = element_blank())
     
+    ggplotly(gg)%>%
+      layout(plot_bgcolor='rgb(255,255,255') %>% 
+      layout(paper_bgcolor='rgb(255,255,255)') %>%
+      layout(xaxis = list(tickfont = list(size = 10)), 
+             yaxis = list(tickfont = list(size = 10)))%>%
+      config(displaylogo = FALSE, modeBarButtonsToRemove = c("zoomIn2d", "zoomOut2d", "toImage", "pan2d", "zoom2d", "select2d","lasso2d", "autoScale2d", "hoverCompareCartesian", "hoverClosestCartesian"))
+    
+  })
+  
+  
+  
+  # Correlation matrix on pollutants in Visualization -> Correlation Matrix
+  output$corrPoll <- renderPlotly({
+    
+    # REACTIVE function to get user input and build matrix suitable for correlation computation
     react_corr_poll  <- reactive({
-     
       df<-dati_small %>%
         select(meseGiorno, NomeTipoSensoreENG, valore, anno) %>%
         filter(anno != "2001" & anno != "2002" & anno != "2003" & anno != "2004")%>%
@@ -223,49 +225,40 @@ function(input, output, session){
         select(meseGiorno, valore, anno) %>%
         filter(meseGiorno != "01-01" & meseGiorno != "02-29")
       df  <- reshape(df , idvar = "meseGiorno" , timevar = "anno", direction = "wide")
-      #print(head(df))
-      colnames(df)<-c("meseGiorno","2005","2006","2007","2008","2009"
-                      ,"2010","2011","2012","2013","2014","2015","2016","2017","2018","2019",
-                      "2020","2021")
+      colnames(df)<-c("meseGiorno","2005","2006","2007","2008","2009","2010","2011",
+                      "2012","2013","2014","2015","2016","2017","2018","2019","2020","2021")
       return(df)
-    })
-
-    # Create correlation matrix for years
-    df_corr_poll <- cor(react_corr_poll()[,-1], use="complete", method = "pearson")
-    ggcorrplot(df_corr_poll, method = "square", type = "lower", lab=T,  lab_size = 2, 
-               title=paste0("Correlation of ", input$pollCorr, " in years" ), show.diag = F, 
-               colors = c("#154c79", "#e8dbd6", "#901736")  ) 
-    
-  })
-#title = paste0("Pollutant correlation in year ", input$yearCorr ), ggtheme = theme_tufte(), show.diag = F, colors = c("#154c79", "#e8dbd6", "#901736")
-
-      if(input$yearCorr == "Global"){
-        return(df_corr_poll)
-      }
-      else{
-        return(
-          df_corr_poll %>%
-            filter(anno == input$yearCorr)
-          )
-      }
       
     })
-
-    #TITLE
-    if(input$yearCorr == "Global"){t = "Pollutant correlation on data from 2006 to 2021"}
-    else{t = paste0("Pollutant correlation in year ", input$yearCorr ) }
     
-    # Create correlation matrix for years
-    df_corr <- cor(react_corr_poll()[,3:8], use="complete", method = "pearson")
-    ggcorrplot(df_corr, method = "square", type = "lower", title = t,  show.diag = F, colors = c("#154c79", "#e8dbd6", "#901736") )+
-      theme(plot.title = element_text(hjust = 0.5),
+    # LABEL
+    pol <- gsub(" .*$", "", input$pollCorr)
+    
+    
+    # TITLE
+    t = paste0("Correlation of years for ", pol )
+    
+    # Correlation matrix pollutant across years
+    df_corr_poll <- cor(react_corr_poll()[,-1], use="complete", method = "pearson")
+    gg <-ggcorrplot(df_corr_poll,method = "square", type = "lower", lab=F,  lab_size = 4, 
+                    title=t, show.diag = F, 
+                    colors = c("#154c79", "#e8dbd6", "#901736")) +
+      theme(plot.title = element_text(size = 10, hjust = 0.5),
+            legend.title=element_text(size=8),
+            legend.text = element_text(size=6),
             panel.grid.major = element_blank(), 
-            panel.grid.minor = element_blank()) #ggtheme = theme_tufte(),
-  })
+            panel.grid.minor = element_blank())
+    
+    ggplotly(gg)%>%
+      layout(plot_bgcolor='rgb(255,255,255') %>% 
+      layout(paper_bgcolor='rgb(255,255,255)') %>%
+      layout(xaxis = list(tickfont = list(size = 10)), 
+             yaxis = list(tickfont = list(size = 10)))%>%
+      config(displaylogo = FALSE, modeBarButtonsToRemove = c("zoomIn2d", "zoomOut2d", "toImage", "pan2d", "zoom2d", "select2d","lasso2d", "autoScale2d", "hoverCompareCartesian", "hoverClosestCartesian"))
+    
+  })  
+  
 
-  
-  
-  
   
   # Plot Output in Interactive Maps -> Pollutants Concentration
   output$concentration <- renderLeaflet({

@@ -5,8 +5,8 @@ from update_functions import *
 import time 
 
 """
-Simplified Main to be run automatically in the Windows task scheduler
-to check for number of updates in data retrived from API for further optimization pursposes
+Simplified Main to be automatically run in the Windows task scheduler
+to check for number of updates in data retrived from sensors API for further optimization pursposes
 """
 
 def main():
