@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmi:id="_PnieEBTiEe22LfQaOsWnxA" confirmationNeeded="false" name="Default">
+  <contextParameter xmi:id="_PnieERTiEe22LfQaOsWnxA" comment="" name="postgresWoneli_Port" prompt="postgresWoneli_Port?" promptNeeded="false" repositoryContextId="" type="id_String" value="5432"/>
+  <contextParameter xmi:id="_PnieEhTiEe22LfQaOsWnxA" comment="" name="postgresWoneli_Schema" prompt="postgresWoneli_Schema?" promptNeeded="false" repositoryContextId="" type="id_String" value="public"/>
+  <contextParameter xmi:id="_PnieExTiEe22LfQaOsWnxA" comment="" name="postgresWoneli_Login" prompt="postgresWoneli_Login?" promptNeeded="false" repositoryContextId="" type="id_String" value="woneli"/>
+  <contextParameter xmi:id="_PnieFBTiEe22LfQaOsWnxA" comment="" name="postgresWoneli_Server" prompt="postgresWoneli_Server?" promptNeeded="false" repositoryContextId="" type="id_String" value="188.165.216.169"/>
+  <contextParameter xmi:id="_PnieFRTiEe22LfQaOsWnxA" comment="" name="postgresWoneli_Password" prompt="postgresWoneli_Password?" promptNeeded="false" repositoryContextId="" type="id_Password" value="enc:system.encryption.key.v1:65t8bSCX+N9ODKNjc1dNQ0KvYOZJpkJ/pnl/JTUsD6y+aA=="/>
+  <contextParameter xmi:id="_PnieFhTiEe22LfQaOsWnxA" comment="" name="postgresWoneli_Database" prompt="postgresWoneli_Database?" promptNeeded="false" repositoryContextId="" type="id_String" value="postgres01"/>
+  <contextParameter xmi:id="_PnieFxTiEe22LfQaOsWnxA" comment="" name="postgresWoneli_AdditionalParams" prompt="postgresWoneli_AdditionalParams?" promptNeeded="false" repositoryContextId="" type="id_String" value=""/>
+</talendfile:ContextType>

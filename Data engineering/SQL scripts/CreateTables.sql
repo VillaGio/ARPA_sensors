@@ -10,8 +10,8 @@ create table logs(
 
 
 
----Create table stations for stations history 
-CREATE TABLE stations(
+---Create table stations_sens for sensors stations history 
+CREATE TABLE stations_sens(
 	idsensore int8 NULL,
 	nometiposensore varchar NULL,
 	unitamisura varchar NULL,
@@ -32,11 +32,33 @@ CREATE TABLE stations(
 );
 
 
+---Create table stations_weather for weather stations history 
+CREATE TABLE stations_weather(
+	idsensore int8 NULL,
+	tipologia varchar NULL,
+	unit_dimisura varchar NULL,
+	idstazione int8 NULL,
+	nomestazione varchar null,
+	quota int8 NULL,
+	provincia varchar NULL,
+	storico varchar(2) NULL,
+	datastart timestamp,
+	datastop timestamp NULL,
+	cgb_nord int8 NULL,
+	cgb_est int8 NULL,
+	lat float8 NULL,
+	lng float8 null,
+	coordinate varchar null,
+	primary key (idsensore, datastart)
+);
+
+
 
 ---Create table stations_check_datastop for stations with S and no enddate
 create table stations_check_datastop(
 idsensore int8,
-ultima_acquisizione timestamp null
+ultima_acquisizione timestamp,
+table_name varchar
 );
 
 
@@ -44,13 +66,14 @@ ultima_acquisizione timestamp null
 ---Create table stations_check_datastart for stations with no startdate
 create table stations_check_datastart(
 idsensore int8,
-prima_acquisizione timestamp null
+prima_acquisizione timestamp,
+table_name varchar
 );
 
 
 
----Create table for weather data
-create table sens_weather_2021 (
+---Create tables for sensors data
+create table sens_data_2022 (
 	idsensore int8 NULL,
 	dataora timestamp NULL,
 	valore float8 NULL,
@@ -58,3 +81,26 @@ create table sens_weather_2021 (
 	idoperatore int4 NULL
 );
 
+
+
+---Create tables for weather data
+create table weather_data_2022 (
+	idsensore int8 NULL,
+	dataora timestamp NULL,
+	valore float8 NULL,
+	stato varchar(2) NULL,
+	idoperatore int4 NULL
+);
+
+
+---Create table rejected for rejected rows in sens_/weather_ data tables
+create table rejected (
+	"current_date" timestamp default current_timestamp,
+	tabella varchar,
+	idsensore int8,
+	"data" varchar,
+	valore float8,
+	stato varchar,
+	idoperatore int8,
+	errormessage varchar
+);

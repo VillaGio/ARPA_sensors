@@ -1,0 +1,2 @@
+This files is needed to have the folder loaded onto the git repo
+when the folder is empty.

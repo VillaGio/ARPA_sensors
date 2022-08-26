@@ -1,0 +1,60 @@
+{
+  "itemId" : "_-mI0cALLEe2wBLJuuaDo9Q",
+  "contextList" : [ {
+    "contextName" : "Default",
+    "repoId" : "_xp94ABC4Ee2u54ayzz1g8w",
+    "parameterList" : [ {
+      "id" : "_GzQrMBmnEe2t7YhvJP2yRw",
+      "name" : "endpoinAPI_sensors_currentY"
+    }, {
+      "id" : "_GzQrMhmnEe2t7YhvJP2yRw",
+      "name" : "endpoinAPI_stations_sensors"
+    }, {
+      "id" : "_GzQrMxmnEe2t7YhvJP2yRw",
+      "name" : "endpoinAPI_stations_weather"
+    }, {
+      "id" : "_GzQrMRmnEe2t7YhvJP2yRw",
+      "name" : "endpoinAPI_weather_currentM"
+    }, {
+      "id" : "_VOo30Bl0Ee2NHIF9nupjkg",
+      "name" : "regex_file_to_read"
+    }, {
+      "id" : "_xqbLARC4Ee2u54ayzz1g8w",
+      "name" : "sensors_path_input"
+    }, {
+      "id" : "_t20_gBPXEe2PZ5Brpncq4g",
+      "name" : "sensors_path_output"
+    }, {
+      "id" : "_3PNpIBSxEe2LPaOiXgeo7A",
+      "name" : "weather_path_input"
+    }, {
+      "id" : "_3PNpIRSxEe2LPaOiXgeo7A",
+      "name" : "weather_path_output"
+    } ]
+  }, {
+    "contextName" : "Default",
+    "repoId" : "_PmzeQBTiEe22LfQaOsWnxA",
+    "parameterList" : [ {
+      "id" : "_PnieFxTiEe22LfQaOsWnxA",
+      "name" : "postgresWoneli_AdditionalParams"
+    }, {
+      "id" : "_PnieFhTiEe22LfQaOsWnxA",
+      "name" : "postgresWoneli_Database"
+    }, {
+      "id" : "_PnieExTiEe22LfQaOsWnxA",
+      "name" : "postgresWoneli_Login"
+    }, {
+      "id" : "_PnieFRTiEe22LfQaOsWnxA",
+      "name" : "postgresWoneli_Password"
+    }, {
+      "id" : "_PnieERTiEe22LfQaOsWnxA",
+      "name" : "postgresWoneli_Port"
+    }, {
+      "id" : "_PnieEhTiEe22LfQaOsWnxA",
+      "name" : "postgresWoneli_Schema"
+    }, {
+      "id" : "_PnieFBTiEe22LfQaOsWnxA",
+      "name" : "postgresWoneli_Server"
+    } ]
+  } ]
+}

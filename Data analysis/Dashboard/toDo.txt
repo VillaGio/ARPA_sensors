@@ -1,10 +1,7 @@
 COSE DA FARE ORA:
 
--fai corr matrix
-	- vedi perchè dropdown method non è responsive
-
--fai grafici lineari tutti assieme
-
+-fai grafici lineari tutti assieme per sensori (?)
+-fai grafici per dati meteo
 
 COSE DA FARE ALLA FINE:
 

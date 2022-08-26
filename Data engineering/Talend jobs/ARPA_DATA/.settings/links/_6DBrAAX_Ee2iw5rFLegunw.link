@@ -1,0 +1,20 @@
+{
+  "itemId" : "_6DBrAAX_Ee2iw5rFLegunw",
+  "contextList" : [ {
+    "contextName" : "Default",
+    "repoId" : "_xp94ABC4Ee2u54ayzz1g8w",
+    "parameterList" : [ {
+      "id" : "_xqbLARC4Ee2u54ayzz1g8w",
+      "name" : "sensors_path_input"
+    }, {
+      "id" : "_t20_gBPXEe2PZ5Brpncq4g",
+      "name" : "sensors_path_output"
+    }, {
+      "id" : "_3PNpIRSxEe2LPaOiXgeo7A",
+      "name" : "weather_path_output"
+    }, {
+      "id" : "_3PNpIBSxEe2LPaOiXgeo7A",
+      "name" : "weather_path_input"
+    } ]
+  } ]
+}
