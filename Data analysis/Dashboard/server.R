@@ -15,7 +15,7 @@ function(input, output, session){
     
     # REACTIVE function to get user input for year and pollutant in Distributions dropdown menu
     react_histogram <- reactive({
-      return( dati_small %>% filter(anno == input$annoHist, NomeTipoSensoreENG == input$pollHist ))
+      return( sens_aggrDay %>% filter(anno == input$annoHist, NomeTipoSensoreENG == input$pollHist ))
     })
     
     validate(need(react_histogram()$NomeTipoSensoreENG[1], message = paste0(input$pollHist, " data not provided for year ",input$annoHist, "." )))
@@ -27,7 +27,7 @@ function(input, output, session){
     
     
     # PALETTE
-    p <- df_max_small[2, react_histogram()$NomeTipoSensoreENG[1]]
+    p <- sens_aggrDay_utils[2, react_histogram()$NomeTipoSensoreENG[1]]
     m <- ifelse(p == "OrRd",6, ifelse(p == "YlOrBr", 5, 3) )
     p <- brewer.pal(6, p)[m]
     #p <- "#2b3e50" #if we want same color for all
@@ -36,7 +36,7 @@ function(input, output, session){
     # HISTOGRAM
     gg <- ggplot(react_histogram(),aes(x = react_histogram()$valore, color = 'density')) +  
       geom_histogram(aes(y = ..density..), fill = "white", alpha = 0.2, bins =30) + 
-      scale_x_continuous(limits = c(0,as.double(df_max_small[1, react_histogram()$NomeTipoSensoreENG[1]]))) +
+      scale_x_continuous(limits = c(0,as.double(sens_aggrDay_utils[1, react_histogram()$NomeTipoSensoreENG[1]]))) +
       geom_density(color = p, 
                    fill = p, alpha = 0.30) + 
       ggtitle(paste0("Histogram of average values for ", pol, " in year ", react_histogram()$anno[1]))+
@@ -78,7 +78,7 @@ function(input, output, session){
     # REACTIVE function to get the user input for pollutant
     react_stacked <- reactive({
       return(
-        dati_small %>%
+        sens_aggrDay %>%
           select(anno, valore, NomeTipoSensoreENG) %>%
           filter(NomeTipoSensoreENG == input$pollHist) %>%
           filter(anno == "2021" | anno == "2019" | anno == "2015" | anno == "2011" | anno == "2007" | anno == "2003" | anno == "2001") %>%
@@ -98,7 +98,7 @@ function(input, output, session){
       geom_density(aes(group = anno, color = anno), alpha = 0.5) +
       ggtitle(paste0("Density of ", pol, " across years" ))+
       #scale_color_uchicago()+
-      scale_color_brewer(palette = df_max[2, react_stacked()$NomeTipoSensoreENG[1]], "Years",
+      scale_color_brewer(palette = sens_utils[2, react_stacked()$NomeTipoSensoreENG[1]], "Years",
                          guide = guide_legend(keywidth = 0.2))+
       xlab(paste0(pol, " - ", u)) +
       ylab("Density")  +
@@ -125,7 +125,7 @@ function(input, output, session){
   output$boxplot <- renderPlotly({
     
     react_boxplot <- reactive({return(
-      dati_small %>%
+      sens_aggrDay %>%
         select(anno, valore, NomeTipoSensoreENG) %>%
         filter(NomeTipoSensoreENG == input$pollBoxplot) %>%
         mutate(valore = round(valore,2)))
@@ -164,7 +164,7 @@ function(input, output, session){
       
       if(input$yearCorr == "Global"){
         
-        df<-dati_small %>%
+        df<-sens_aggrDay %>%
           select(meseGiorno, NomeTipoSensoreENG, valore, anno) %>%
           select(meseGiorno, valore, NomeTipoSensoreENG)
         df  <- reshape(df , idvar = "meseGiorno" , timevar = "NomeTipoSensoreENG", direction = "wide")
@@ -172,7 +172,7 @@ function(input, output, session){
         
       }else{
         
-        df<-dati_small %>%
+        df<-sens_aggrDay %>%
           select(meseGiorno, NomeTipoSensoreENG, valore, anno) %>%
           filter(anno == input$yearCorr)%>%
           select(meseGiorno, valore, NomeTipoSensoreENG) 
@@ -218,7 +218,7 @@ function(input, output, session){
     
     # REACTIVE function to get user input and build matrix suitable for correlation computation
     react_corr_poll  <- reactive({
-      df<-dati_small %>%
+      df<-sens_aggrDay %>%
         select(meseGiorno, NomeTipoSensoreENG, valore, anno) %>%
         filter(anno != "2001" & anno != "2002" & anno != "2003" & anno != "2004")%>%
         filter(NomeTipoSensoreENG == input$pollCorr)%>%
@@ -266,7 +266,7 @@ function(input, output, session){
 
     # REACTIVE function to get user input in Pollutants Concentration
     user_select <- reactive({
-      w <- df_all %>% filter(anno == input$year, NomeTipoSensoreENG == input$pollutant )
+      w <- sensors_map %>% filter(anno == input$year, NomeTipoSensoreENG == input$pollutant )
       return(w)
     })
 
@@ -288,9 +288,9 @@ function(input, output, session){
       lapply(htmltools::HTML)
     
     #PALETTE
-    m <- df_max[1, user_select()$NomeTipoSensoreENG]
+    m <- sens_utils[1, user_select()$NomeTipoSensoreENG]
     m <-m[1,1]
-    p <- df_max[2, user_select()$NomeTipoSensoreENG]
+    p <- sens_utils[2, user_select()$NomeTipoSensoreENG]
     p <- p[1,1]
     pal = colorBin(palette = p, 9, domain = 0:m )
     
@@ -321,12 +321,11 @@ function(input, output, session){
   
   
   
-  # Plot Output in Interactive Maps -> Sensors Position
-  output$stations <- renderLeaflet({
-    
+  # Plot Output in Interactive Maps -> Poluutant Sensors Position
+  output$stationsS <- renderLeaflet({
     
     #REACTIVE function returning the subset of stations to display 
-    user_select_staz <- reactive(return(staz[staz$NomeTipoSensoreENG %in% input$checkGroup, ]))
+    user_select_staz <- reactive(return(stations_sens_map[stations_sens_map$NomeTipoSensoreENG %in% input$checkGroupS, ]))
     
     #LABELS
     lab = paste(
@@ -342,25 +341,25 @@ function(input, output, session){
     pals = c("#A6CEE3", "#1F78B4","#B2DF8A", "#33A02C", "#FB9A99", "#E31A1C", "#FDBF6F", "#FF7F00", "#CAB2D6", "#FFFF99", "#B15928", "#B2182B", "#1A9850", "#C51B7D")
     
     #MAP
-    staz%>%
+    stations_sens_map%>%
       leaflet() %>%
       setView(lat = 45.4791, lng= 9.8452, zoom = 7) %>%
       addProviderTiles(providers$CartoDB.Positron) %>%
-      #addCircleMarkers(data = staz[staz$NomeTipoSensoreENG=="PM10", ], lat= ~lat, lng = ~lng, radius = 2.5, fill=T, opacity = 0.8, weight=2, color = pals(staz$NomeTipoSensoreENG[staz$NomeTipoSensoreENG=="PM10"]),label= lab, group = "PM10" ) %>%
+      #addCircleMarkers(data = stations_sens_map[stations_sens_map$NomeTipoSensoreENG=="PM10", ], lat= ~lat, lng = ~lng, radius = 2.5, fill=T, opacity = 0.8, weight=2, color = pals(stations_sens_map$NomeTipoSensoreENG[staz$NomeTipoSensoreENG=="PM10"]),label= lab, group = "PM10" ) %>%
       
       addLegend("bottomright",
                 colors = pals,
-                labels = sort(unique(staz$NomeTipoSensoreENG)),
+                labels = sort(unique(stations_sens_map$NomeTipoSensoreENG)),
                 title = "Pollutants",
                 opacity = 0.7)
   })
   
   
   
-  observeEvent(input$checkGroup, {
-    
+  observeEvent(input$checkGroupS, {
+
     #REACTIVE function returning the subset of stations to display 
-    user_select_staz <- reactive(return(staz[staz$NomeTipoSensoreENG %in% input$checkGroup, ]))
+    user_select_staz <- reactive(return(stations_sens_map[stations_sens_map$NomeTipoSensoreENG %in% input$checkGroupS, ]))
     
     #LABELS 
     popups <- paste(
@@ -373,19 +372,104 @@ function(input, output, session){
       lapply(htmltools::HTML)
     
     #MAP
-    leafletProxy("stations", data =staz) %>%
-      clearMarkers()%>%
+    leafletProxy("stationsS", data =user_select_staz()) %>%
+      clearMarkers() %>% 
       addCircleMarkers(lng =  ~user_select_staz()$lng,
                        lat = ~user_select_staz()$lat,
                        group = "Stations",
                        label = popups,
                        radius = 2.5, fill=T, opacity = 0.8, weight=2,
                        color = user_select_staz()$color) %>%
+        
+        addLayersControl(
+          overlayGroups = c("Stations"),
+          options = layersControlOptions(collapsed = TRUE))
       
-      addLayersControl(
-        overlayGroups = c("Stations"),
-        options = layersControlOptions(collapsed = TRUE))
   })
 
+  
+  observeEvent(input$resetMapS, 
+               {leafletProxy("stationsS") %>%
+                   clearMarkers()
+                 
+                 if (input$resetMapS > 0) {
+                   updateCheckboxGroupInput(session = session, "checkGroupS", choices = list("Ammonia", "Arsenic", "Benzene", "Black Carbon", "Cadmium", "Carbon Monoxide", "Lead", "Nickel","Nitric Oxide", "Nitrogen Dioxide", "Nitrogen Monoxide", "Ozone", "PM10", "PM2.5"), selected=NULL)
+                 }
+               })
+  ###########################################################
+  # Plot Output in Interactive Maps -> Weather Sensors Position
+  output$stationsW <- renderLeaflet({
+ 
+    #REACTIVE function returning the subset of stations to display 
+    user_select_stazW <- reactive(return(stations_weather_map[stations_weather_map$TipologiaENG %in% input$checkGroupW, ]))
+    
+    #LABELS
+    lab = paste(
+      "<strong>Province: </strong>",
+      user_select_stazW()$ProvinciaLong , "</br>",
+      "<strong>Station Name: </strong>",
+      user_select_stazW()$NomeStazione, "</br>",
+      "<strong>Pollutant: </strong>",
+      user_select_stazW()$TipologiaENG) %>%
+      lapply(htmltools::HTML)
+    
+    #PALETTE
+    pals = c("#A6CEE3", "#1F78B4","#B2DF8A", "#33A02C", "#FB9A99", "#E31A1C", "#FDBF6F", "#FF7F00")
+    
+    #MAP
+    stations_weather_map%>%
+      leaflet() %>%
+      setView(lat = 45.4791, lng= 9.8452, zoom = 7) %>%
+      addProviderTiles(providers$CartoDB.Positron) %>%
+      #addCircleMarkers(data = stations_sens_map[stations_sens_map$NomeTipoSensoreENG=="PM10", ], lat= ~lat, lng = ~lng, radius = 2.5, fill=T, opacity = 0.8, weight=2, color = pals(stations_sens_map$NomeTipoSensoreENG[staz$NomeTipoSensoreENG=="PM10"]),label= lab, group = "PM10" ) %>%
+      
+      addLegend("bottomright",
+                colors = pals,
+                labels = sort(unique(stations_weather_map$TipologiaENG)),
+                title = "Condition",
+                opacity = 0.7)
+  })
+  
+  
+  
+  observeEvent(input$checkGroupW, {
+
+    #REACTIVE function returning the subset of stations to display 
+    user_select_stazW <- reactive(return(stations_weather_map[stations_weather_map$TipologiaENG %in% input$checkGroupW, ]))
+    
+    #LABELS 
+    popups <- paste(
+      "<strong>Province: </strong>",
+      user_select_stazW()$ProvinciaLong , "</br>",
+      "<strong>Station Name: </strong>",
+      user_select_stazW()$NomeStazione, "</br>",
+      "<strong>Weather Condition: </strong>",
+      user_select_stazW()$TipologiaENG) %>%
+      lapply(htmltools::HTML)
+    
+    #MAP
+    leafletProxy("stationsW", data =stations_weather_map) %>%
+      clearMarkers()%>%
+      addCircleMarkers(lng =  ~user_select_stazW()$lng,
+                       lat = ~user_select_stazW()$lat,
+                       group = "Station",
+                       label = popups,
+                       radius = 2.5, fill=T, opacity = 0.8, weight=2,
+                       color = user_select_stazW()$color) %>%
+      
+      addLayersControl(
+        overlayGroups = c("Station"),
+        options = layersControlOptions(collapsed = TRUE))
+  })
+  
+  
+  observeEvent(input$resetMapW, 
+               {leafletProxy("stationsW") %>%
+                   clearMarkers()
+                 
+                 if (input$resetMapW > 0) {
+                   updateCheckboxGroupInput(session = session, "checkGroupW", choices =list("Global Radiation", "Hydrometric Level", "Rain", "Relative Humidity","Snow Level", "Temperature", "Wind Direction", "Wind Speed"), selected=NULL)
+                 }
+               })
   
 }

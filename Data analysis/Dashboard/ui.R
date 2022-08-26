@@ -1,17 +1,17 @@
-library(shiny) # shiny features
-library(shinydashboard) # shiny dashboard functions
-library(DT)  # for DT tables
-library(dplyr)  # for pipe operator & data manipulations
-library(plotly) # for data visualization and plots using plotly 
-library(ggplot2) # for data visualization & plots using ggplot2
-library(ggthemes)   #for ggplot themes
-library(ggtext) # beautifying text on top of ggplot
-library(maps) # for USA states map - boundaries used by ggplot for mapping
-library(ggcorrplot) # for correlation plot
-library(shinycssloaders) # to add a loader while graph is populating
-library(leaflet) # for leaflet maps
-library(sf) # to handle shp files
-library(RColorBrewer) # for color palettes
+library(shiny)            # shiny features
+library(shinydashboard)   # shiny dashboard functions
+library(DT)               # for DT tables
+library(dplyr)            # for pipe operator & data manipulations
+library(plotly)           # for data visualization and plots using plotly 
+library(ggplot2)          # for data visualization & plots using ggplot2
+library(ggthemes)         # for ggplot themes
+library(ggtext)           # beautifying text on top of ggplot
+library(maps)             # for USA states map - boundaries used by ggplot for mapping
+library(ggcorrplot)       # for correlation plot
+library(shinycssloaders)  # to add a loader while graph is populating
+library(leaflet)          # for leaflet maps
+library(sf)               # to handle shp files
+library(RColorBrewer)     # for color palettes
 library(ggsci)
 # https://fontawesome.com/v4/icons/
 
@@ -23,12 +23,12 @@ dashboardPage(
                   tags$li(class="dropdown",tags$a(href="https://github.com/VillaGio/ARPA_sensors", icon("github"), "Source Code", target="_blank"))
                   ),
   
-  ## Siderbar
+  ## Sidebar
   dashboardSidebar(
     
     sidebarMenu(id = "sidebar",
-                menuItem("Dataset", tabName = "data", icon = icon("database")),
-                menuItem("Visualization", tabName = "viz", icon=icon("chart-line")),
+                menuItem("Datasets", tabName = "data", icon = icon("database")),
+                menuItem("Visualizations", tabName = "viz", icon=icon("chart-line")),
                 
                 # Conditional Panel for conditional widget appearance
                 # Filter should appear only for the visualization menu and selected tabs within it
@@ -61,7 +61,11 @@ dashboardPage(
                               #Drop-down menu with pollutants
                               selectInput("datatype", 
                                           label = "Select dataset:",
-                                          choices = list("Pollutants Dataset" = "sensori", "Stations Position Dataset"= "stazioni")),
+                                          choices = list("Pollutants Dataset" = "sensors", 
+                                                         "Weather Dataset" = "weather", 
+                                                         "Sensors Stations Position Dataset"= "stations_sens",
+                                                         "Weather Stations Position Dataset"= "stations_weather"
+                                                         )),
                               
                               #Dataset to display
                               div(dataTableOutput("dataStaz"), style = "font-size:90%"))
@@ -71,7 +75,7 @@ dashboardPage(
       tabItem(tabName = "viz", 
               tabBox(id="t2",  width=12, 
                      #tabPanel("Descriptives"),
-                     tabPanel("Distribution",
+                     tabPanel("Distribution", icon=icon("chart-bar"),
                               tags$style(HTML(".js-irs-0 .irs-single, .js-irs-0 .irs-bar-edge, .js-irs-0 .irs-bar {background: #2b3e50; border-top: #2b3e50; border-bottom: #2b3e50}")),
                               
                               fluidRow(
@@ -85,6 +89,7 @@ dashboardPage(
                               )),
                      
                      tabPanel("Boxplot",
+                              title = div(img(src="https://www.svgrepo.com/show/370122/graph-boxplot.svg",height='25', width='25'), "Boxplot"),
                               fluidRow(
                                 column(4, box(selectInput("pollBoxplot", label = "Pollutant:", choices = list("PM10", "PM2.5", "CO - Carbon Monoxide","O3 - Ozone", "NO - Nitric Oxide", "NO2 - Nitrogen Dioxide")),
                                               width = NULL, solidHeader = TRUE)),
@@ -92,7 +97,7 @@ dashboardPage(
                               )
                      ),
                      
-                     tabPanel("Correlation Matrix",
+                     tabPanel("Correlation Matrix",icon=icon("braille"),
                               tags$style(HTML(".js-irs-1 .irs-single, .js-irs-1 .irs-bar-edge, .js-irs-1 .irs-bar {background: #2b3e50; border-top: #2b3e50; border-bottom: #2b3e50}")),
                               
                               fluidRow(
@@ -124,20 +129,40 @@ dashboardPage(
                                 column(8, box(leafletOutput("concentration"), width = NULL, solidHeader = TRUE))
                                 )
                               ),
-               
-                      tabPanel("Sensors Position", 
+                      
+                      tabPanel(" Sensors Position", 
                                icon = icon("map-marker", lib = "glyphicon"),
                                #Checkbox for pollutants and stations map
                                #tags$head(tags$style(HTML(".multicol{font-size:12px;height:auto;-webkit-column-count: 2;-moz-column-count: 2;column-count: 2;}"))),
+                                tags$head(tags$style(HTML('.box{-webkit-box-shadow: none; -moz-box-shadow: none;box-shadow: none;}'))),
                         
-                        fluidRow(
-                          #column(3, "Some description"),
-                          column(4, box(checkboxGroupInput("checkGroup",
-                                                       label="Pollutant(s): ",
-                                                       choices = list("Ammonia", "Arsenic", "Benzene", "Black Carbon", "Cadmium", "Carbon Monoxide", "Lead", "Nickel","Nitric Oxide", "Nitrogen Dioxide", "Nitrogen Monoxide", "Ozone", "PM10", "PM2.5")), width = NULL, solidHeader = TRUE)),
-                          column(8, box(leafletOutput("stations"), width = NULL, solidHeader = TRUE))
+                        fluidRow( tags$style(".nav-tabs-custom {box-shadow: none;};"), 
+                          
+                          tabBox(title = "", side = "left", width = 12, selected = "Pollutants",
+                                 tabPanel("Pollutants",
+                                   #column(3, "Some description"),
+                                   column(3, box(checkboxGroupInput("checkGroupS",
+                                                                    label="Pollutant(s): ",
+                                                                    choices = list("Ammonia", "Arsenic", "Benzene", "Black Carbon", "Cadmium", "Carbon Monoxide", "Lead", "Nickel","Nitric Oxide", "Nitrogen Dioxide", "Nitrogen Monoxide", "Ozone", "PM10", "PM2.5")),  width = NULL, solidHeader = TRUE)),
+                                   column(1, box(actionButton(inputId="resetMapS",
+                                                          label="Reset", 
+                                                          style="color: #fff; background-color: #2b3e50; border-style: solid; border-color: #2b3e50; margin: 5px"), width = NULL, solidHeader = TRUE)),
+                                   column(8, box(leafletOutput("stationsS"), width = NULL, solidHeader = TRUE))
+                                 ),
+                                 tabPanel("Weather",
+                                   #column(3, "Some description"),
+                                   column(3, box(checkboxGroupInput("checkGroupW",
+                                                                    label="Weather condition(s): ",
+                                                                    choices = list("Global Radiation", "Hydrometric Level", "Rain", "Relative Humidity","Snow Level", "Temperature", "Wind Direction", "Wind Speed")),  width = NULL, solidHeader = TRUE)),
+                                   column(1, box(actionButton(inputId="resetMapW",
+                                                          label="Reset", 
+                                                          style="color: #fff; background-color: #2b3e50; border-style: solid; border-color: #2b3e50; margin: 5px"),  width = NULL, solidHeader = TRUE)),
+                                   column(8, box(leafletOutput("stationsW"), width = NULL, solidHeader = TRUE))
+                                 )
                           )
-                        )
+                            )
+                        ),
+         
                ))
                         )
               )
