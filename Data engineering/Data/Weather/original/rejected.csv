@@ -1,0 +1,6 @@
+IdSensore,Data,Valore,Stato,idOperatore,errorCode,errorMessage,
+,10:00.0,37.9,VA,1,,Couldn't parse value for column 'IdSensore' in 'row1'," value is '﻿6'. Details: java.lang.NumberFormatException: For input string: ""﻿6"" - Line: 53538851"
+,10/03/2012 23:10,2,VA,1,,Couldn't parse value for column 'IdSensore' in 'row1'," value is 'xxx'. Details: java.lang.NumberFormatException: For input string: ""xxx"" - Line: 58196361"
+10666,09/08/2020 08:40,0,VA,,,Couldn't parse value for column 'idOperatore' in 'row1'," value is '4﻿idSensore'. Details: java.lang.NumberFormatException: For input string: ""4﻿idSensore"" - Line: 37430744"
+;01/01/2011 00:10:00.000;37.9;VA;1;;Couldn't parse value for column 'IdSensore' in 'split_csv', value is '﻿6'. Details: java.lang.NumberFormatException: For input string: "﻿6" - Line: 53538851
+;10/03/2012 23:10:00;2.0;VA;1;;Couldn't parse value for column 'IdSensore' in 'split_csv', value is 'xxx'. Details: java.lang.NumberFormatException: For input string: "xxx" - Line: 58196361

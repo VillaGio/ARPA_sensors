@@ -1,22 +1,19 @@
-1) OK Cambia case sensitive, fai rename...tutti campi in minuscolo senza virgolette 
 
-2) OK Controlla duplicati da import [rimangono i duplicati del 2022 - OK --> SCARICATI DA API ]
+TALEND
 
-3) OK Programma per controllo integrità del dato: randomicamente controlla che i dati nelle tabelle e i dati sui csv sorgente siano coerenti 
+-  su postgres non filtra i duplicati
 
-4) OK Creare tabella di logging --> tenere traccia di quando avvengono le cose
-
-5) OK Per 2022: controllare ogni quanto vengono aggiornati i dati per fare 6)
-
-6) OK Sistemare ingestion da API: automatizzazione fatta con windows scheduler
-
-7) OK Fare tabella e job per storico stazioni 
+-  non va autmazione job con Windows scheduler
 
 
-8)   Riscrivi jobDescription per job SensPositionHistory
-9)   Aggiungi descrizione a funzioni in python
-10)  Sistema ordine in file Descriptive_stats.pynb
-11)  Sistema e aggiungi file .sql per manipolazioni in dbeaver
--------------------------------------------------------------------------
-RIFAI PICKEL SENS_DATA_2020
+	----
+	Fine:
 
+	-  Riscrivi jobDescription jobs 
+
+	-  Fai diagrammi di flusso
+
+
+PYHTON
+
+- non va il main, chiedi a Luca/Ste
