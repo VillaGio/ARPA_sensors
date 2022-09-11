@@ -59,7 +59,7 @@ def generatePickle(dataframe, year: int, kind: str):
 
 
 def generatePickles(kind:str, year:int=0):
-    """Generates and saves a pickle files for data in Postgres DB tables from year 1995 to present.
+    """Generates and saves pickle files for data in Postgres DB tables from year 1995 to present.
         If year argument is specified, the pickle file for data of that year only will be generated.
 
     Parameters
