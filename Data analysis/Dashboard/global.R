@@ -27,5 +27,7 @@ sens_aggrDay <- read.csv("./data/sens_aggrDay.csv")
 sens_aggrDay$meseGiorno<-format(as.Date(sens_aggrDay$dataora,format="%Y-%m-%d"), format = "%m-%d")
 
 
+# Load pretrained model for predictions
+model <- readRDS("./data/model.rds")
 
 

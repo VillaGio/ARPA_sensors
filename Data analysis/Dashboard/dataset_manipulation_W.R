@@ -79,3 +79,96 @@ save(stations_weather_map, file = "./data/stations_weather_map.RData")
 
 
 
+#################### sens_aggrDay: AGGREGATE DF ON DATE ONLY FOR PLOT REPRESENTATION OF POLLUTANTS ####################
+
+#### 1) AGGREGATE DF ON DAY AND IDSENSORE
+
+#Base df
+dati_day <- setNames(data.frame(matrix(ncol = 7, nrow = 0)), c("idesensore", "dataora", "Tipologia", "valore", "anno"))
+
+
+#Single years csv
+for(year in 2021:2012){
+  path = paste("../../Data engineering/Data/Weather/modifiedForBulk/mod_", year, ".csv", sep="")
+  
+  dati <- read.csv(path)
+  dati_merged <- merge(dati, stationsW, by.x="idsensore", by.y="IdSensore")
+  dati_filtered <- dati_merged[dati_merged$Tipologia=="Temperatura" | dati_merged$Tipologia==str_detect(Tipologia, "Velocit")  ,]
+  rm(dati_merged)
+  dati_filtered <- dati_filtered[dati_filtered$valore > 0,]
+  
+  dati_filtered <- dati_filtered %>% mutate(dataora = substr(dataora, 1,10))
+  
+  dati_grouped <- dati_filtered %>%
+    group_by(idsensore, dataora, Tipologia) %>%
+    summarise_at(vars(valore), list(valore = mean))
+  
+  rm(dati_filtered)
+  
+  dati_grouped["anno"] = year
+  
+  dati_grouped <- dati_grouped %>% mutate(Tipologia =
+                                            NomeTipoSensoreENG =
+                                            case_when(Tipologia == "Temperatura" ~ "Temperature",
+                                                      str_detect(Tipologia, "Velocit") ~ "Wind"
+                                            ))
+  
+  dati_day <- rbind(dati_day, dati_grouped)
+  
+  rm(dati_grouped)
+  
+  print(year)
+}
+
+
+write.csv(dati_day, "./data/dati_dailyW.csv", row.names = FALSE)
+
+
+#Multiple years csv
+dati_day <- read.csv("./data/dati_dailyW.csv")
+
+for (year in c(2000, 2005, 2008, 2010)){
+  
+  path = paste("../../Data engineering/Data/Weather/modifiedForBulk/mod_", year, ".csv", sep="")
+  
+  dati <- read.csv(path)
+  dati_merged <- merge(dati, stationsS, by.x="idsensore", by.y="IdSensore")
+  rm(dati)
+  
+  rm(dati_merged)
+  dati_filtered <- dati_filtered[dati_filtered$valore > 0,]
+  dati_filtered <- dati_filtered %>% mutate(dataora = substr(dataora, 1,10))
+  
+  dati_filtered <- dati_filtered %>% mutate (anno = as.numeric(format(as.Date(dati_filtered$dataora, format = "%Y-%m-%d"), format = "%Y")))
+  
+  dati_grouped <- dati_filtered %>%
+    group_by(idsensore, dataora, NomeTipoSensore, anno) %>%
+    summarise_at(vars(valore), list(valore = mean))
+  
+  rm(dati_filtered)
+  dati_grouped <- dati_grouped %>% mutate(NomeTipoSensoreENG =
+                                            case_when(Tipologia == "Temperatura" ~ "Temperature",
+                                                      str_detect(Tipologia, "Velocit") ~ "Wind"
+                                            ))
+  
+  
+  dati_day <- rbind(dati_day, dati_grouped)
+  
+  print(year)
+}
+
+
+write.csv(dati_day, "./data/dati_dailyW.csv", row.names = FALSE)
+
+
+
+##### 2) AGGREGATE DF ON DATE ONLY FOR PLOT REPRESENTATION OF POLLUTANTS 
+dati_day <- read.csv("./data/dati_dailyW.csv")
+
+sens_aggrDay <- dati_day %>% 
+  group_by(dataora, NomeTipoSensoreENG, anno) %>%
+  summarise_at(vars(valore), list(valore = mean))
+
+write.csv(sens_aggrDay, "./data/weath_aggrDay.csv", row.names = FALSE)
+
+

@@ -1,4 +1,0 @@
-JOB sensorsPositionHistory
-
-
-{ - cambiare la logica di gestione degli issue usando una query (window function) } NO IDEA HOW TO DO IT

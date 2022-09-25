@@ -77,12 +77,14 @@ function(input, output, session){
     
     # REACTIVE function to get the user input for pollutant
     react_stacked <- reactive({
+      p <- sens_aggrDay %>%
+        dplyr::select(anno, valore, NomeTipoSensoreENG) %>%
+        filter(NomeTipoSensoreENG == input$pollHist) %>%
+        filter(anno == "2021" | anno == "2019" | anno == "2015" | anno == "2011" | anno == "2007" | anno == "2003" | anno == "2001") %>%
+        mutate(anno = as.factor(anno), valore = round(valore, 2))
+      print(p)
       return(
-        sens_aggrDay %>%
-          select(anno, valore, NomeTipoSensoreENG) %>%
-          filter(NomeTipoSensoreENG == input$pollHist) %>%
-          filter(anno == "2021" | anno == "2019" | anno == "2015" | anno == "2011" | anno == "2007" | anno == "2003" | anno == "2001") %>%
-          mutate(anno = as.factor(anno), valore = round(valore, 2))
+        p
         
         )})
     
@@ -126,7 +128,7 @@ function(input, output, session){
     
     react_boxplot <- reactive({return(
       sens_aggrDay %>%
-        select(anno, valore, NomeTipoSensoreENG) %>%
+        dplyr::select(anno, valore, NomeTipoSensoreENG) %>%
         filter(NomeTipoSensoreENG == input$pollBoxplot) %>%
         mutate(valore = round(valore,2)))
     })
@@ -165,17 +167,16 @@ function(input, output, session){
       if(input$yearCorr == "Global"){
         
         df<-sens_aggrDay %>%
-          select(meseGiorno, NomeTipoSensoreENG, valore, anno) %>%
-          select(meseGiorno, valore, NomeTipoSensoreENG)
+          dplyr::select(meseGiorno, valore, NomeTipoSensoreENG)
         df  <- reshape(df , idvar = "meseGiorno" , timevar = "NomeTipoSensoreENG", direction = "wide")
         colnames(df)<-c("meseGiorno","CO","NO","NO2","O3","PM10","PM2.5")
         
       }else{
         
         df<-sens_aggrDay %>%
-          select(meseGiorno, NomeTipoSensoreENG, valore, anno) %>%
+          dplyr::select(meseGiorno, NomeTipoSensoreENG, valore, anno) %>%
           filter(anno == input$yearCorr)%>%
-          select(meseGiorno, valore, NomeTipoSensoreENG) 
+          dplyr::select(meseGiorno, valore, NomeTipoSensoreENG) 
         df  <- reshape(df , idvar = "meseGiorno" , timevar = "NomeTipoSensoreENG", direction = "wide")
         colnames(df)<-c("meseGiorno","CO","NO","NO2","O3","PM10","PM2.5")
         
@@ -219,10 +220,10 @@ function(input, output, session){
     # REACTIVE function to get user input and build matrix suitable for correlation computation
     react_corr_poll  <- reactive({
       df<-sens_aggrDay %>%
-        select(meseGiorno, NomeTipoSensoreENG, valore, anno) %>%
+        dplyr::select(meseGiorno, NomeTipoSensoreENG, valore, anno) %>%
         filter(anno != "2001" & anno != "2002" & anno != "2003" & anno != "2004")%>%
         filter(NomeTipoSensoreENG == input$pollCorr)%>%
-        select(meseGiorno, valore, anno) %>%
+        dplyr::select(meseGiorno, valore, anno) %>%
         filter(meseGiorno != "01-01" & meseGiorno != "02-29")
       df  <- reshape(df , idvar = "meseGiorno" , timevar = "anno", direction = "wide")
       colnames(df)<-c("meseGiorno","2005","2006","2007","2008","2009","2010","2011",
@@ -471,5 +472,41 @@ function(input, output, session){
                    updateCheckboxGroupInput(session = session, "checkGroupW", choices =list("Global Radiation", "Hydrometric Level", "Rain", "Relative Humidity","Snow Level", "Temperature", "Wind Direction", "Wind Speed"), selected=NULL)
                  }
                })
+  
+  
+############ PREDICTIONS ##############
+  
+  # Input Data
+  datasetInput <- reactive({  
+    
+    df <- data.frame(
+      Name = c("pioggia",
+               "temperatura",
+               "vento",
+               "O3",
+               "pm2p5"),
+      Value = as.character(c(input$rain,
+                             input$temp,
+                             input$wind,
+                             input$ozone,
+                             input$pm25)),
+      stringsAsFactors = FALSE)
+    
+    pm10 <- 0
+    df <- rbind(df, pm10)
+    input <- transpose(df)
+    write.table(input,"input.csv", sep=",", quote = FALSE, row.names = FALSE, col.names = FALSE)
+    
+    test <- read.csv(paste("input", ".csv", sep=""), header = TRUE)
+    
+    predict(model,test)
+    
+  })
+
+  
+  # Prediction results table
+  output$tabledata <- renderText({
+   if (input$submitbutton>0) { 
+      paste0(round(isolate(datasetInput()), 2), " \U03bc", "g/m", "\U00B3")  } })
   
 }
