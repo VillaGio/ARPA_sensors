@@ -16,6 +16,11 @@ library(shinyBS)          # for hover info text button
 library(data.table)       # to display model results table 
 library(tensorflow)       # to load keras model
 library(keras)            # to load keras model
+library(rgdal)
+library(plyr)
+library(tidyverse)       # tidy data wrangling
+library(vroom)           # fast reading/importing csv data
+library(tigris)          # geojoin
 library(ggsci)
 #install.packages("BiocManager")
 #BiocManager::install("hdf5r")

@@ -1,6 +1,10 @@
 ################# LOAD DATA #################
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
+# Load shapefile for maps
+shapef <- st_read("./ProvCM01012022/ProvCM01012022_WGS84.shp")
+shapef <- shapef[, c(9,13)]
+
 
 # Load datasets for tab DATA
 sensors <- na.omit(read.csv("./data/sensors2022.csv"))
@@ -10,9 +14,12 @@ stations_weather <- read.csv("./data/stations_weather.csv")
 
 
 # Load datasets for MAPS
-load("./data/sensors_map.RData")
+#load("./data/sensors_map.RData")
 load("./data/stations_sens_map.RData")
 load("./data/stations_weather_map.RData")
+sensors_map <- read.csv("./data/sensors_map.csv")
+sensors_map <- geo_join(shapef, sensors_map, "SIGLA", "SIGLA", how = "inner")
+sensors_map <- sensors_map %>% drop_na(ProvinciaLong)
 
 # Load utilities datasets
 sens_utils <- read.csv("./data/sens_utils.csv")
