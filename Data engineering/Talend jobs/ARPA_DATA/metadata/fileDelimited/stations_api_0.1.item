@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.record="http:///orgomg/cwm/resource/record.ecore">
+  <TalendMetadata:DelimitedFileConnection xmi:id="_O0VUQO7qEey4S5OarC0mlQ" name="stations_api" dataPackage="_O0VUQe7qEey4S5OarC0mlQ" Server="Localhost 127.0.0.1" FilePath="C:/Users/giorg/OneDrive/Desktop/Final Thesis/ARPA_sensors/Data engineering/Data/Stations/stazioni_api.csv" Encoding="ISO-8859-1" FieldSeparatorValue="&quot;,&quot;" RowSeparatorValue="&quot;\n&quot;" UseHeader="true" HeaderValue="1" FirstLineCaption="true" EscapeType="CSV" EscapeChar="&quot;\&quot;&quot;" TextEnclosure="&quot;\&quot;&quot;" CsvOption="true" FieldSeparatorType="Comma"/>
+  <orgomg.cwm.resource.record:RecordFile xmi:id="_O0VUQe7qEey4S5OarC0mlQ" name="default" dataManager="_O0VUQO7qEey4S5OarC0mlQ">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_O0VUQu7qEey4S5OarC0mlQ" id="_-hmsoO7pEey4S5OarC0mlQ" label="metadata">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_O0VUQ-7qEey4S5OarC0mlQ" label="idsensore" length="5" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_O0VURO7qEey4S5OarC0mlQ" label="nometiposensore" length="26" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_O0VURe7qEey4S5OarC0mlQ" label="unitamisura" length="5" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_O0VURu7qEey4S5OarC0mlQ" label="idstazione" length="3" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_O0VUR-7qEey4S5OarC0mlQ" label="nomestazione" length="38" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_O0VUSO7qEey4S5OarC0mlQ" label="quota" length="3" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_O0VUSe7qEey4S5OarC0mlQ" label="provincia" length="2" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_O0VUSu7qEey4S5OarC0mlQ" label="comune" length="23" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_O0VUS-7qEey4S5OarC0mlQ" label="storico" length="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_O0VUTO7qEey4S5OarC0mlQ" label="datastart" length="23" talendType="id_Date" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_O0VUTe7qEey4S5OarC0mlQ" label="datastop" length="23" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_O0VUTu7qEey4S5OarC0mlQ" label="utm_nord" length="7" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_O0VUT-7qEey4S5OarC0mlQ" label="utm_est" length="6" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_O0VUUO7qEey4S5OarC0mlQ" label="coordinate" length="10" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_O0VUUe7qEey4S5OarC0mlQ" label="Column14" length="11" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+    </ownedElement>
+  </orgomg.cwm.resource.record:RecordFile>
+</xmi:XMI>

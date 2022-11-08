@@ -1,0 +1,29 @@
+{
+  "itemId" : "_c7EykLmOEeyZ5N7sUffbUA",
+  "contextList" : [ {
+    "contextName" : "Default",
+    "repoId" : "_uxokcLmOEeyZ5N7sUffbUA",
+    "parameterList" : [ {
+      "id" : "_uxyVcbmOEeyZ5N7sUffbUA",
+      "name" : "postgres_Schema"
+    }, {
+      "id" : "_uxyVcrmOEeyZ5N7sUffbUA",
+      "name" : "postgres_Server"
+    }, {
+      "id" : "_uxyVc7mOEeyZ5N7sUffbUA",
+      "name" : "postgres_Port"
+    }, {
+      "id" : "_uxyVdLmOEeyZ5N7sUffbUA",
+      "name" : "postgres_AdditionalParams"
+    }, {
+      "id" : "_uxyVdbmOEeyZ5N7sUffbUA",
+      "name" : "postgres_Password"
+    }, {
+      "id" : "_uxyVdrmOEeyZ5N7sUffbUA",
+      "name" : "postgres_Login"
+    }, {
+      "id" : "_uxyVd7mOEeyZ5N7sUffbUA",
+      "name" : "postgres_Database"
+    } ]
+  } ]
+}

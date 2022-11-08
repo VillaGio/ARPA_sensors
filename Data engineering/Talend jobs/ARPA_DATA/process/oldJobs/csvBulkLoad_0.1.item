@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMapper="http://www.talend.org/mapper" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default" jobType="Standard">
   <context confirmationNeeded="false" name="Default">
-    <contextParameter comment="" name="sensors_path_input" prompt="Select path of sensors data csv files" promptNeeded="false" repositoryContextId="_xp94ABC4Ee2u54ayzz1g8w" type="id_Directory" value="C:/Users/giorg/OneDrive/Desktop/Final Thesis/ARPA_sensors/Data engineering/Data/Sensors/original/" internalId="_EO8_wBTjEe22LfQaOsWnxA"/>
-    <contextParameter comment="" name="sensors_path_output" prompt="sensors_path_output?" promptNeeded="false" repositoryContextId="_xp94ABC4Ee2u54ayzz1g8w" type="id_Directory" value="C:/Users/giorg/OneDrive/Desktop/Final Thesis/ARPA_sensors/Data engineering/Data/Sensors/modifiedForBulk/" internalId="_EO8_wRTjEe22LfQaOsWnxA"/>
-    <contextParameter comment="" name="weather_path_input" prompt="weather_path_input?" promptNeeded="false" repositoryContextId="_xp94ABC4Ee2u54ayzz1g8w" type="id_Directory" value="C:/Users/giorg/OneDrive/Desktop/Final Thesis/ARPA_sensors/Data engineering/Data/Weather/original/" internalId="_EO8_whTjEe22LfQaOsWnxA"/>
-    <contextParameter comment="" name="weather_path_output" prompt="weather_path_output?" promptNeeded="false" repositoryContextId="_xp94ABC4Ee2u54ayzz1g8w" type="id_Directory" value="C:/Users/giorg/OneDrive/Desktop/Final Thesis/ARPA_sensors/Data engineering/Data/Weather/modifiedForBulk/" internalId="_EO8_wxTjEe22LfQaOsWnxA"/>
+    <contextParameter comment="" name="sensors_path_input" prompt="Select path of sensors data csv files" promptNeeded="false" repositoryContextId="_xp94ABC4Ee2u54ayzz1g8w" type="id_Directory" value="ARPA_sensors/Data engineering/Data/Sensors/original/" internalId="_EO8_wBTjEe22LfQaOsWnxA"/>
+    <contextParameter comment="" name="sensors_path_output" prompt="sensors_path_output?" promptNeeded="false" repositoryContextId="_xp94ABC4Ee2u54ayzz1g8w" type="id_Directory" value="ARPA_sensors/Data engineering/Data/Sensors/modifiedForBulk/" internalId="_EO8_wRTjEe22LfQaOsWnxA"/>
+    <contextParameter comment="" name="weather_path_input" prompt="weather_path_input?" promptNeeded="false" repositoryContextId="_xp94ABC4Ee2u54ayzz1g8w" type="id_Directory" value="ARPA_sensors/Data engineering/Data/Weather/original/" internalId="_EO8_whTjEe22LfQaOsWnxA"/>
+    <contextParameter comment="" name="weather_path_output" prompt="weather_path_output?" promptNeeded="false" repositoryContextId="_xp94ABC4Ee2u54ayzz1g8w" type="id_Directory" value="ARPA_sensors/Data engineering/Data/Weather/modifiedForBulk/" internalId="_EO8_wxTjEe22LfQaOsWnxA"/>
     <contextParameter comment="" name="postgresWoneli_AdditionalParams" prompt="postgresWoneli_AdditionalParams?" promptNeeded="false" repositoryContextId="_PmzeQBTiEe22LfQaOsWnxA" type="id_String" value="" internalId="_EO8_xBTjEe22LfQaOsWnxA"/>
     <contextParameter comment="" name="postgresWoneli_Database" prompt="postgresWoneli_Database?" promptNeeded="false" repositoryContextId="_PmzeQBTiEe22LfQaOsWnxA" type="id_String" value="postgres01" internalId="_EO8_xRTjEe22LfQaOsWnxA"/>
     <contextParameter comment="" name="postgresWoneli_Login" prompt="postgresWoneli_Login?" promptNeeded="false" repositoryContextId="_PmzeQBTiEe22LfQaOsWnxA" type="id_String" value="woneli" internalId="_EO8_xhTjEe22LfQaOsWnxA"/>
-    <contextParameter comment="" name="postgresWoneli_Password" prompt="postgresWoneli_Password?" promptNeeded="false" repositoryContextId="_PmzeQBTiEe22LfQaOsWnxA" type="id_Password" value="enc:system.encryption.key.v1:njxdaKy0raKYw+EvnZGLYMMlPKof8OeyO8GqT0gljQ/yzw==" internalId="_EO8_xxTjEe22LfQaOsWnxA"/>
+    <contextParameter comment="" name="postgresWoneli_Password" prompt="postgresWoneli_Password?" promptNeeded="false" repositoryContextId="_PmzeQBTiEe22LfQaOsWnxA" type="id_Password" value="enc:system.encryption.key.v1:VT+Bi4yoB1Qf6qpXb3mjmnyBBuVLAw9Mr4AyF+g1glz3oQ==" internalId="_EO8_xxTjEe22LfQaOsWnxA"/>
     <contextParameter comment="" name="postgresWoneli_Port" prompt="postgresWoneli_Port?" promptNeeded="false" repositoryContextId="_PmzeQBTiEe22LfQaOsWnxA" type="id_String" value="5432" internalId="_EO8_yBTjEe22LfQaOsWnxA"/>
     <contextParameter comment="" name="postgresWoneli_Schema" prompt="postgresWoneli_Schema?" promptNeeded="false" repositoryContextId="_PmzeQBTiEe22LfQaOsWnxA" type="id_String" value="public" internalId="_EO8_yRTjEe22LfQaOsWnxA"/>
     <contextParameter comment="" name="postgresWoneli_Server" prompt="postgresWoneli_Server?" promptNeeded="false" repositoryContextId="_PmzeQBTiEe22LfQaOsWnxA" type="id_String" value="188.165.216.169" internalId="_EO8_yhTjEe22LfQaOsWnxA"/>
@@ -57,7 +57,7 @@
     <elementParameter field="TEXT" name="PROPERTIES_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:PybkvjjmhEpD1A4SxvbkmdPkKh//9tNuWIoOgk2V" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:NXOc43fSxONlZ7r1JZutQguKPjW4tQO03kfVKQQf" show="false"/>
     <elementParameter field="FILE" name="DBFILE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="DBTABLE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="QUERY_CONDITION_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
@@ -92,7 +92,7 @@
     <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:SGHJwv3luoDsNDhkydkMkGngCZc1iuLwtTI1s+zK" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:5+Sl+NvxXZY93Yo7Lraueckr67ImhLdyvwGSLs0a" show="false"/>
     <elementParameter field="FILE" name="DBFILE" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_STATS" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_LOGS" value="&quot;&quot;" show="false"/>
@@ -137,7 +137,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="context.postgresWoneli_Database"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="context.postgresWoneli_Schema"/>
     <elementParameter field="TEXT" name="USER" value="context.postgresWoneli_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:17DMQpPVpOI/hr9fidiIYloxTFs9iBuErudKKuz2++srTp0RgQZXR43jHeO8VIkPFH8NLeW6YZuKZX0="/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:5BD4qrLrYa79HT+m86thTCrdbfmu8B0skeAtSefin2a9TXU1OwztnXx5cOZ4ogePuS9B+/gHN5m83w4="/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="CHECK" name="USE_SHARED_CONNECTION" value="false"/>
@@ -1125,7 +1125,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:LSxaonzUNaIGBXn6eCHTry7ASEaU7FU/361+dMnx" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:L4Rq3s4q8O4wsn85BJc3UcUcNDbAZ2wrr+fhrGHv" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;sens_data_1995&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="TRUNCATE"/>
     <elementParameter field="LABEL" name="NOTE" value="Warning : this component configuration will automatically generate a commit before bulk insert"/>
@@ -1184,7 +1184,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:7Z6mgjyzsQETFsyDtp2bKcc8DoaajRuUQHZ11yoX" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:HQuE4d4OtFy3JEkjeU7jc0ZDaiY03SkPfuWomcvb" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;sens_data_2000&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="TRUNCATE"/>
     <elementParameter field="LABEL" name="NOTE" value="Warning : this component configuration will automatically generate a commit before bulk insert"/>
@@ -1235,7 +1235,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:UXDFCEDwtzw6rNn0tpNQymtKcoMMYC9IvobwCLBB" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:UcfclwcsMc3DF9W0k5qhZMZdVICymHuEcTIgflFx" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;sens_data_2004&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="TRUNCATE"/>
     <elementParameter field="LABEL" name="NOTE" value="Warning : this component configuration will automatically generate a commit before bulk insert"/>
@@ -1286,7 +1286,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:EroZPHhPzHX+ETy5fuhWWHe/dF+NBFWDsEza7xuT" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:mrbLr+ibWfoBNwnjW9UTq7EtmU9PhlVfhjz9Y658" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;sens_data_2007&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="TRUNCATE"/>
     <elementParameter field="LABEL" name="NOTE" value="Warning : this component configuration will automatically generate a commit before bulk insert"/>
@@ -1337,7 +1337,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:OPGKE0w0V5jS8P2FQPu2ABjRxwgf7duzATkAOy1P" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:AKD8aWTgjmMos9yXmCtTbWL4qKm4IXSkkSAWx+Ol" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;sens_data_2010&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="TRUNCATE"/>
     <elementParameter field="LABEL" name="NOTE" value="Warning : this component configuration will automatically generate a commit before bulk insert"/>
@@ -1388,7 +1388,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:Dim5ETbsTUoYaIp+w1C2BS8Q//HfLPf6+ROk6zmy" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:EtjLoKXF4MBGUE9mfYDaMJYUu9+ZsNP3g8qJ7q7x" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;sens_data_2011&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="TRUNCATE"/>
     <elementParameter field="LABEL" name="NOTE" value="Warning : this component configuration will automatically generate a commit before bulk insert"/>
@@ -1439,7 +1439,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:OyMoCQkkcdPOGhm5IaR+DLNneD4PsptekTJAtnwn" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:/eThOCWzh2LuL6q2pp6XCCOu350KL6PTQclzJVmE" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;sens_data_2012&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="TRUNCATE"/>
     <elementParameter field="LABEL" name="NOTE" value="Warning : this component configuration will automatically generate a commit before bulk insert"/>
@@ -1490,7 +1490,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:21vGCMMQzKParFhyJWq2S5LYpg/TcuU+FB+KcHvP" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:A0b8Ql+IuAKRXX+B81E79qAIQiFvS4sYdboAijVB" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;sens_data_2013&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="TRUNCATE"/>
     <elementParameter field="LABEL" name="NOTE" value="Warning : this component configuration will automatically generate a commit before bulk insert"/>
@@ -1541,7 +1541,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:IUvUOsPWnc6HrM3ayVQH0r9VfivELu1wclKYP2Mz" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:yDAbChiB5exYWQW3fWceDD76EV95vrLBUdBgSWYj" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;sens_data_2014&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="TRUNCATE"/>
     <elementParameter field="LABEL" name="NOTE" value="Warning : this component configuration will automatically generate a commit before bulk insert"/>
@@ -1592,7 +1592,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:drH3x6UTCeDirSNhDuD3mMA+dKq/ULfcPFn21T05" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:DkZ5wH+1D8Yip4Ld2vkr7h4j19yHJdzUf5snDHBN" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;sens_data_2015&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="TRUNCATE"/>
     <elementParameter field="LABEL" name="NOTE" value="Warning : this component configuration will automatically generate a commit before bulk insert"/>
@@ -1643,7 +1643,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:Q9onfD82DrJLy9fvBq099pAVCibGq72UPl1zmbKW" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:mzVdT3F5ZVFRWHWrqxKFqXKWYrNPyhc4Oh7vnYKN" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;sens_data_2016&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="TRUNCATE"/>
     <elementParameter field="LABEL" name="NOTE" value="Warning : this component configuration will automatically generate a commit before bulk insert"/>
@@ -1694,7 +1694,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:RtegPX4Vwdh7xkd8TxQSRSlqKKVAU7DqLHEEu3t7" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:lZBRz2J+6CO+aKKRUcl01ZJl5rz9OCU8j75Q3gyX" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;sens_data_2017&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="TRUNCATE"/>
     <elementParameter field="LABEL" name="NOTE" value="Warning : this component configuration will automatically generate a commit before bulk insert"/>
@@ -1745,7 +1745,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:Ub5o/xiZ8XJyx6b/jo2SZCxjlWN4CiNFBhS+Boz3" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:M6XJSUaevqx5+qrNsozU4/mdL/ecSVBuHghFoKJy" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;sens_data_2018&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="TRUNCATE"/>
     <elementParameter field="LABEL" name="NOTE" value="Warning : this component configuration will automatically generate a commit before bulk insert"/>
@@ -1796,7 +1796,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:1ip+emv09j41JGYZ/i5NoKM2Wphjl/HBNYtn/WFr" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:ekSF7McaWLk02VMHHxRo2duXLV0KTDfsyxWbekeN" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;sens_data_2019&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="TRUNCATE"/>
     <elementParameter field="LABEL" name="NOTE" value="Warning : this component configuration will automatically generate a commit before bulk insert"/>
@@ -1847,7 +1847,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:GEQ+h7I2kaef53YniYR5k3uMOJ6+sjzvhb45TKvZ" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:iF+BV7JnKSDn7XC+oFGDMOkuThLMxjAfZLgH4p70" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;sens_data_2020&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="TRUNCATE"/>
     <elementParameter field="LABEL" name="NOTE" value="Warning : this component configuration will automatically generate a commit before bulk insert"/>
@@ -1898,7 +1898,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:T4OBT0JQKDkYetD7aMfmfToYFS/dxtVwLok852YY" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:2ns8SYuHI+yMXKgwLgnGuQ1u1is947McH2hvvAed" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;sens_data_2021&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="TRUNCATE"/>
     <elementParameter field="LABEL" name="NOTE" value="Warning : this component configuration will automatically generate a commit before bulk insert"/>
@@ -2342,7 +2342,7 @@
   </connection>
   <subjob>
     <elementParameter field="CHECK" name="COLLAPSED" value="true" show="false"/>
-    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true" show="false"/>
+    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tPrejob_1" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="230;100;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="255;220;180"/>

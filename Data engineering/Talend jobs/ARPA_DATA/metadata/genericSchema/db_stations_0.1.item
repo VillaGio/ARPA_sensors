@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010">
+  <TalendMetadata:GenericSchemaConnection xmi:id="_8eUH0O48EeyeyeUR4Mmldg" comment="connectionComment" label="connectionLabel" dataPackage="_8eUH0e48EeyeyeUR4Mmldg" mappingTypeUsed="true" mappingTypeId="postgres_id"/>
+  <TalendMetadata:GenericPackage xmi:id="_8eUH0e48EeyeyeUR4Mmldg" dataManager="_8eUH0O48EeyeyeUR4Mmldg">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_8eUH0u48EeyeyeUR4Mmldg" id="_ghzFYO-3Eeyj2ZZyKYF77g" label="stations">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eUH0-48EeyeyeUR4Mmldg" name="idsensore" id="503" label="idsensore" length="5" sourceType="INT8" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eUH1O48EeyeyeUR4Mmldg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eUH1e48EeyeyeUR4Mmldg" name="nometiposensore" id="504" label="nometiposensore" length="21" sourceType="VARCHAR" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eUH1u48EeyeyeUR4Mmldg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eUH1-48EeyeyeUR4Mmldg" name="unitamisura" id="505" label="unitamisura" length="5" sourceType="VARCHAR" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eUH2O48EeyeyeUR4Mmldg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eUH2e48EeyeyeUR4Mmldg" name="idstazione" id="506" label="idstazione" length="3" sourceType="INT8" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eUH2u48EeyeyeUR4Mmldg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eUH2-48EeyeyeUR4Mmldg" name="nomestazione" id="507" label="nomestazione" length="25" sourceType="VARCHAR" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eUH3O48EeyeyeUR4Mmldg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eUH3e48EeyeyeUR4Mmldg" name="quota" id="508" label="quota" length="-1" sourceType="INT8" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eUH3u48EeyeyeUR4Mmldg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eUH3-48EeyeyeUR4Mmldg" name="provincia" id="509" label="provincia" length="2" sourceType="VARCHAR" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eUH4O48EeyeyeUR4Mmldg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eUH4e48EeyeyeUR4Mmldg" name="comune" id="510" label="comune" length="14" sourceType="VARCHAR" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eUH4u48EeyeyeUR4Mmldg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eUH4-48EeyeyeUR4Mmldg" name="storico" id="511" label="storico" length="-1" sourceType="VARCHAR" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eUH5O48EeyeyeUR4Mmldg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eUH5e48EeyeyeUR4Mmldg" name="datastart" id="512" label="datastart" length="23" sourceType="TIMESTAMP" talendType="id_Date" pattern="&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;">
+        <initialValue xmi:id="_8eUH5u48EeyeyeUR4Mmldg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eUH5-48EeyeyeUR4Mmldg" name="datastop" id="513" label="datastop" length="-1" sourceType="TIMESTAMP" talendType="id_Date" pattern="&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;">
+        <initialValue xmi:id="_8eUH6O48EeyeyeUR4Mmldg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eUH6e48EeyeyeUR4Mmldg" name="utm_nord" id="514" label="utm_nord" length="7" sourceType="INT8" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eUH6u48EeyeyeUR4Mmldg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eUH6-48EeyeyeUR4Mmldg" name="utm_est" id="515" label="utm_est" length="6" sourceType="INT8" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eUH7O48EeyeyeUR4Mmldg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_oxoYIO-4Eeyj2ZZyKYF77g" name="lat" label="lat" length="-1" sourceType="FLOAT8" talendType="id_Double"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_o4BUAO-4Eeyj2ZZyKYF77g" name="lng" label="lng" length="-1" sourceType="FLOAT8" talendType="id_Double"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eUH7e48EeyeyeUR4Mmldg" name="coordinate" id="516" label="coordinate" length="-1" precision="-1" sourceType="VARCHAR" talendType="id_String">
+        <initialValue xmi:id="_8eUH7u48EeyeyeUR4Mmldg"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eUH7-48EeyeyeUR4Mmldg" name="tag" id="517" label="tag" length="-1" precision="-1" sourceType="INT4" talendType="id_Integer">
+        <initialValue xmi:id="_8eUH8O48EeyeyeUR4Mmldg"/>
+      </feature>
+    </ownedElement>
+  </TalendMetadata:GenericPackage>
+</xmi:XMI>

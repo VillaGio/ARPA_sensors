@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recyclebin:RecycleBin xmlns:recyclebin="http://www.talend.org/recyclebin">
+  <deletedFolders>process/data_integration_course</deletedFolders>
+  <deletedItems id="_JoOlcNKTEeyRdNDD7jnqsQ" path="" type="CONTEXT"/>
+  <deletedItems id="_uxokcLmOEeyZ5N7sUffbUA" path="" type="CONTEXT"/>
+  <deletedItems id="_2fINoNKSEeyRdNDD7jnqsQ" path="" type="METADATA_CONNECTIONS"/>
+  <deletedItems id="_c7EykLmOEeyZ5N7sUffbUA" path="" type="METADATA_CONNECTIONS"/>
+  <deletedItems id="_5cMFIB7EEe2TdrHAFM27Aw" path="" type="METADATA_FILE_DELIMITED"/>
+  <deletedItems id="_O0RC0O7qEey4S5OarC0mlQ" path="" type="METADATA_FILE_DELIMITED"/>
+  <deletedItems id="_dsEeMPPEEeyjyK795WHDOA" path="" type="METADATA_FILE_DELIMITED"/>
+  <deletedItems id="_1MH_gN0YEeyWHdQ2BWDi6g" path="data_integration_course" type="PROCESS"/>
+  <deletedItems id="_o5-pUNzUEeykZPCZmOCv4Q" path="data_integration_course" type="PROCESS"/>
+  <deletedItems id="_ydrfwM0TEeyG2ONcr3IzQg" path="data_integration_course" type="PROCESS"/>
+  <deletedItems id="_5wxMcAX2Ee2iw5rFLegunw" path="meteo" type="PROCESS"/>
+</recyclebin:RecycleBin>
